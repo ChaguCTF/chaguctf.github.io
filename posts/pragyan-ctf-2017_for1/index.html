@@ -1,0 +1,279 @@
+<!doctype html><html lang=en-us>
+<head>
+<link rel=preload href=/lib/font-awesome/webfonts/fa-brands-400.woff2 as=font type=font/woff2 crossorigin=anonymous>
+<link rel=preload href=/lib/font-awesome/webfonts/fa-regular-400.woff2 as=font type=font/woff2 crossorigin=anonymous>
+<link rel=preload href=/lib/font-awesome/webfonts/fa-solid-900.woff2 as=font type=font/woff2 crossorigin=anonymous>
+<link rel=preload href=/lib/JetBrainsMono/web/woff2/JetBrainsMono-Regular.woff2 as=font type=font/woff2 crossorigin=anonymous>
+<script type=text/javascript src=https://latest.cactus.chat/cactus.js></script>
+<link rel=stylesheet href=https://latest.cactus.chat/style.css type=text/css>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<title> Pragyan CTF 2017: Look Harder (50pts) | ChaGu CTF</title>
+<link rel=canonical href=https://chagu.org/posts/pragyan-ctf-2017_for1/>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta name=robots content="all,follow">
+<meta name=googlebot content="index,follow,snippet,archive">
+<meta property="og:title" content="Pragyan CTF 2017: Look Harder (50pts) ">
+<meta property="og:description" content="By: [noras] from ChalmersCTF
+Challenge Description : There are rumours that in the Great Sahara Desert, a great treasure has been buried deep inside the ground, but the map for the exact location of the treasure over the years, has not been preserved properly. You have got hold of the map, but it looks nothing more than a plain white sheet of paper. Can you make sense out of it ?">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://chagu.org/posts/pragyan-ctf-2017_for1/"><meta property="article:section" content="posts">
+<meta property="article:published_time" content="2017-03-05T11:22:32+02:00">
+<meta property="article:modified_time" content="2017-03-05T11:22:32+02:00">
+<meta name=twitter:card content="summary">
+<meta name=twitter:title content="Pragyan CTF 2017: Look Harder (50pts) ">
+<meta name=twitter:description content="By: [noras] from ChalmersCTF
+Challenge Description : There are rumours that in the Great Sahara Desert, a great treasure has been buried deep inside the ground, but the map for the exact location of the treasure over the years, has not been preserved properly. You have got hold of the map, but it looks nothing more than a plain white sheet of paper. Can you make sense out of it ?">
+<link rel=stylesheet href=https://chagu.org/css/styles.877f0d187d777677210859d158f899b22bc9251cff14ab3f2aeaaf7e09c4b15a691db4d151e8f0be980792a40c8d658ffb0a5ed37ea53eccec5125ee4e6055b7.css integrity="sha512-h38NGH13dnchCFnRWPiZsivJJRz/FKs/KuqvfgnEsVppHbTRUejwvpgHkqQMjWWP+wpe036lPszsUSXuTmBVtw=="><!--[if lt IE 9]><script src=https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js></script>
+<script src=https://oss.maxcdn.com/respond/1.4.2/respond.min.js></script><![endif]-->
+<link rel=icon type=image/png href=https://chagu.org/images/favicon.ico>
+</head>
+<body class="max-width mx-auto px3 ltr">
+<div class="content index py4">
+<div id=header-post>
+<a id=menu-icon href=#><i class="fas fa-bars fa-lg"></i></a>
+<a id=menu-icon-tablet href=#><i class="fas fa-bars fa-lg"></i></a>
+<a id=top-icon-tablet href=# onclick="$('html, body').animate({scrollTop:0},'fast')" style=display:none aria-label="Top of Page"><i class="fas fa-chevron-up fa-lg"></i></a>
+<span id=menu>
+<span id=nav>
+<ul>
+<li><a href=/>Home</a></li>
+<li><a href=/posts>Writeups</a></li>
+<li><a href=/tags>Tags</a></li>
+<li><a href=/about>About</a></li>
+</ul>
+</span>
+<br>
+<span id=actions>
+<ul>
+<li>
+<a class=icon href=https://chagu.org/posts/pragyan-ctf-2017_steg3/ aria-label=Previous>
+<i class="fas fa-chevron-left" aria-hidden=true onmouseover="$('#i-prev').toggle()" onmouseout="$('#i-prev').toggle()"></i>
+</a>
+</li>
+<li>
+<a class=icon href=https://chagu.org/posts/pragyan-ctf-2017_for2/ aria-label=Next>
+<i class="fas fa-chevron-right" aria-hidden=true onmouseover="$('#i-next').toggle()" onmouseout="$('#i-next').toggle()"></i>
+</a>
+</li>
+<li>
+<a class=icon href=# onclick="$('html, body').animate({scrollTop:0},'fast')" aria-label="Top of Page">
+<i class="fas fa-chevron-up" aria-hidden=true onmouseover="$('#i-top').toggle()" onmouseout="$('#i-top').toggle()"></i>
+</a>
+</li>
+<li>
+<a class=icon href=# aria-label=Share>
+<i class="fas fa-share-alt" aria-hidden=true onmouseover="$('#i-share').toggle()" onmouseout="$('#i-share').toggle()" onclick="return $('#share').toggle(),!1"></i>
+</a>
+</li>
+</ul>
+<span id=i-prev class=info style=display:none>Previous post</span>
+<span id=i-next class=info style=display:none>Next post</span>
+<span id=i-top class=info style=display:none>Back to top</span>
+<span id=i-share class=info style=display:none>Share post</span>
+</span>
+<br>
+<div id=share style=display:none>
+<ul>
+<li>
+<a class=icon href="http://www.facebook.com/sharer.php?u=https%3a%2f%2fchagu.org%2fposts%2fpragyan-ctf-2017_for1%2f" aria-label=Facebook>
+<i class="fab fa-facebook" aria-hidden=true></i>
+</a>
+</li>
+<li>
+<a class=icon href="https://twitter.com/share?url=https%3a%2f%2fchagu.org%2fposts%2fpragyan-ctf-2017_for1%2f&text=Pragyan%20CTF%202017%3a%20Look%20Harder%20%2850pts%29%20" aria-label=Twitter>
+<i class="fab fa-twitter" aria-hidden=true></i>
+</a>
+</li>
+<li>
+<a class=icon href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2fchagu.org%2fposts%2fpragyan-ctf-2017_for1%2f&title=Pragyan%20CTF%202017%3a%20Look%20Harder%20%2850pts%29%20" aria-label=Linkedin>
+<i class="fab fa-linkedin" aria-hidden=true></i>
+</a>
+</li>
+<li>
+<a class=icon href="https://pinterest.com/pin/create/bookmarklet/?url=https%3a%2f%2fchagu.org%2fposts%2fpragyan-ctf-2017_for1%2f&is_video=false&description=Pragyan%20CTF%202017%3a%20Look%20Harder%20%2850pts%29%20" aria-label=Pinterest>
+<i class="fab fa-pinterest" aria-hidden=true></i>
+</a>
+</li>
+<li>
+<a class=icon href="mailto:?subject=Pragyan%20CTF%202017%3a%20Look%20Harder%20%2850pts%29%20&body=Check out this article: https%3a%2f%2fchagu.org%2fposts%2fpragyan-ctf-2017_for1%2f" aria-label=Email>
+<i class="fas fa-envelope" aria-hidden=true></i>
+</a>
+</li>
+<li>
+<a class=icon href="https://getpocket.com/save?url=https%3a%2f%2fchagu.org%2fposts%2fpragyan-ctf-2017_for1%2f&title=Pragyan%20CTF%202017%3a%20Look%20Harder%20%2850pts%29%20" aria-label=Pocket>
+<i class="fab fa-get-pocket" aria-hidden=true></i>
+</a>
+</li>
+<li>
+<a class=icon href="http://reddit.com/submit?url=https%3a%2f%2fchagu.org%2fposts%2fpragyan-ctf-2017_for1%2f&title=Pragyan%20CTF%202017%3a%20Look%20Harder%20%2850pts%29%20" aria-label=reddit>
+<i class="fab fa-reddit" aria-hidden=true></i>
+</a>
+</li>
+<li>
+<a class=icon href="http://www.tumblr.com/share/link?url=https%3a%2f%2fchagu.org%2fposts%2fpragyan-ctf-2017_for1%2f&name=Pragyan%20CTF%202017%3a%20Look%20Harder%20%2850pts%29%20&description=By%3a%20%5bnoras%5d%20from%20ChalmersCTF%0aChallenge%20Description%20%3a%20There%20are%20rumours%20that%20in%20the%20Great%20Sahara%20Desert%2c%20a%20great%20treasure%20has%20been%20buried%20deep%20inside%20the%20ground%2c%20but%20the%20map%20for%20the%20exact%20location%20of%20the%20treasure%20over%20the%20years%2c%20has%20not%20been%20preserved%20properly.%20You%20have%20got%20hold%20of%20the%20map%2c%20but%20it%20looks%20nothing%20more%20than%20a%20plain%20white%20sheet%20of%20paper.%20Can%20you%20make%20sense%20out%20of%20it%20%3f" aria-label=Tumblr>
+<i class="fab fa-tumblr" aria-hidden=true></i>
+</a>
+</li>
+<li>
+<a class=icon href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2fchagu.org%2fposts%2fpragyan-ctf-2017_for1%2f&t=Pragyan%20CTF%202017%3a%20Look%20Harder%20%2850pts%29%20" aria-label="Hacker News">
+<i class="fab fa-hacker-news" aria-hidden=true></i>
+</a>
+</li>
+</ul>
+</div>
+<div id=toc>
+<nav id=TableOfContents>
+<ul>
+<li>
+<ul>
+<li></li>
+</ul>
+</li>
+</ul>
+</nav>
+</div>
+</span>
+</div>
+<article class=post itemscope itemtype=http://schema.org/BlogPosting>
+<header>
+<h1 class=posttitle itemprop="name headline">
+Pragyan CTF 2017: Look Harder (50pts)
+</h1>
+<div class=meta>
+<div class=postdate>
+<time datetime="2017-03-05 11:22:32 +0200 +0200" itemprop=datePublished>2017-03-05</time>
+</div>
+<div class=article-read-time>
+<i class="far fa-clock"></i>
+1 minute read
+</div>
+<div class=article-tag>
+<i class="fas fa-tag"></i>
+<a class=tag-link href=/tags/misc rel=tag>Misc</a>
+</div>
+</div>
+</header>
+<div class=content itemprop=articleBody>
+<p>By: [noras] from <a href=http://chalmersctf.se>ChalmersCTF</a></p>
+<h5 id=challenge-description->Challenge Description :</h5>
+<pre tabindex=0><code>There are rumours that in the Great Sahara Desert, a great treasure has been buried deep inside the ground, but the map for the exact location of the treasure over the years, has not been preserved properly.
+You have got hold of the map, but it looks nothing more than a plain white sheet of paper. Can you make sense out of it ??
+
+
+NOTE :- Please enclose the flag in the format pragyanctf{&lt;flag&gt;}.
+</code></pre><ul>
+<li>File : <a href=images/treasure_map.png>treasure_map.png</a></li>
+</ul>
+<h4 id=solution>Solution:</h4>
+<p>So the image looked like this</p>
+<p><img src=images/treasure_map.png alt=treasure_map.png></p>
+<p>Opening this in photoshop and playing with the levels reveald a qrcode.</p>
+<p><img src=images/treasure_map_levels.png alt=treasure_map.png></p>
+<p>Reading the QR code using this <a href=https://zxing.org/w/decode.jspx>Online QrCode Reader</a> revealed the flag <code>stay_pragyaned</code></p>
+</div>
+</article>
+<div id=footer-post-container>
+<div id=footer-post>
+<div id=nav-footer style=display:none>
+<ul>
+<li><a href=/>Home</a></li>
+<li><a href=/posts>Writeups</a></li>
+<li><a href=/tags>Tags</a></li>
+<li><a href=/about>About</a></li>
+</ul>
+</div>
+<div id=toc-footer style=display:none>
+<nav id=TableOfContents>
+<ul>
+<li>
+<ul>
+<li></li>
+</ul>
+</li>
+</ul>
+</nav>
+</div>
+<div id=share-footer style=display:none>
+<ul>
+<li>
+<a class=icon href="http://www.facebook.com/sharer.php?u=https%3a%2f%2fchagu.org%2fposts%2fpragyan-ctf-2017_for1%2f" aria-label=Facebook>
+<i class="fab fa-facebook fa-lg" aria-hidden=true></i>
+</a>
+</li>
+<li>
+<a class=icon href="https://twitter.com/share?url=https%3a%2f%2fchagu.org%2fposts%2fpragyan-ctf-2017_for1%2f&text=Pragyan%20CTF%202017%3a%20Look%20Harder%20%2850pts%29%20" aria-label=Twitter>
+<i class="fab fa-twitter fa-lg" aria-hidden=true></i>
+</a>
+</li>
+<li>
+<a class=icon href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2fchagu.org%2fposts%2fpragyan-ctf-2017_for1%2f&title=Pragyan%20CTF%202017%3a%20Look%20Harder%20%2850pts%29%20" aria-label=Linkedin>
+<i class="fab fa-linkedin fa-lg" aria-hidden=true></i>
+</a>
+</li>
+<li>
+<a class=icon href="https://pinterest.com/pin/create/bookmarklet/?url=https%3a%2f%2fchagu.org%2fposts%2fpragyan-ctf-2017_for1%2f&is_video=false&description=Pragyan%20CTF%202017%3a%20Look%20Harder%20%2850pts%29%20" aria-label=Pinterest>
+<i class="fab fa-pinterest fa-lg" aria-hidden=true></i>
+</a>
+</li>
+<li>
+<a class=icon href="mailto:?subject=Pragyan%20CTF%202017%3a%20Look%20Harder%20%2850pts%29%20&body=Check out this article: https%3a%2f%2fchagu.org%2fposts%2fpragyan-ctf-2017_for1%2f" aria-label=Email>
+<i class="fas fa-envelope fa-lg" aria-hidden=true></i>
+</a>
+</li>
+<li>
+<a class=icon href="https://getpocket.com/save?url=https%3a%2f%2fchagu.org%2fposts%2fpragyan-ctf-2017_for1%2f&title=Pragyan%20CTF%202017%3a%20Look%20Harder%20%2850pts%29%20" aria-label=Pocket>
+<i class="fab fa-get-pocket fa-lg" aria-hidden=true></i>
+</a>
+</li>
+<li>
+<a class=icon href="http://reddit.com/submit?url=https%3a%2f%2fchagu.org%2fposts%2fpragyan-ctf-2017_for1%2f&title=Pragyan%20CTF%202017%3a%20Look%20Harder%20%2850pts%29%20" aria-label=reddit>
+<i class="fab fa-reddit fa-lg" aria-hidden=true></i>
+</a>
+</li>
+<li>
+<a class=icon href="http://www.tumblr.com/share/link?url=https%3a%2f%2fchagu.org%2fposts%2fpragyan-ctf-2017_for1%2f&name=Pragyan%20CTF%202017%3a%20Look%20Harder%20%2850pts%29%20&description=By%3a%20%5bnoras%5d%20from%20ChalmersCTF%0aChallenge%20Description%20%3a%20There%20are%20rumours%20that%20in%20the%20Great%20Sahara%20Desert%2c%20a%20great%20treasure%20has%20been%20buried%20deep%20inside%20the%20ground%2c%20but%20the%20map%20for%20the%20exact%20location%20of%20the%20treasure%20over%20the%20years%2c%20has%20not%20been%20preserved%20properly.%20You%20have%20got%20hold%20of%20the%20map%2c%20but%20it%20looks%20nothing%20more%20than%20a%20plain%20white%20sheet%20of%20paper.%20Can%20you%20make%20sense%20out%20of%20it%20%3f" aria-label=Tumblr>
+<i class="fab fa-tumblr fa-lg" aria-hidden=true></i>
+</a>
+</li>
+<li>
+<a class=icon href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2fchagu.org%2fposts%2fpragyan-ctf-2017_for1%2f&t=Pragyan%20CTF%202017%3a%20Look%20Harder%20%2850pts%29%20" aria-label="Hacker News">
+<i class="fab fa-hacker-news fa-lg" aria-hidden=true></i>
+</a>
+</li>
+</ul>
+</div>
+<div id=actions-footer>
+<a id=menu-toggle class=icon href=# onclick="return $('#nav-footer').toggle(),!1" aria-label=Menu>
+<i class="fas fa-bars fa-lg" aria-hidden=true></i> Menu</a>
+<a id=toc-toggle class=icon href=# onclick="return $('#toc-footer').toggle(),!1" aria-label=TOC>
+<i class="fas fa-list fa-lg" aria-hidden=true></i> TOC</a>
+<a id=share-toggle class=icon href=# onclick="return $('#share-footer').toggle(),!1" aria-label=Share>
+<i class="fas fa-share-alt fa-lg" aria-hidden=true></i> share</a>
+<a id=top style=display:none class=icon href=# onclick="$('html, body').animate({scrollTop:0},'fast')" aria-label="Top of Page">
+<i class="fas fa-chevron-up fa-lg" aria-hidden=true></i> Top</a>
+</div>
+</div>
+</div>
+<footer id=footer>
+<div class=footer-left>
+Copyright &copy; 2021 ChaGu CTF
+</div>
+<div class=footer-right>
+<nav>
+<ul>
+<li><a href=/>Home</a></li>
+<li><a href=/posts>Writeups</a></li>
+<li><a href=/tags>Tags</a></li>
+<li><a href=/about>About</a></li>
+</ul>
+</nav>
+</div>
+</footer>
+</div>
+</body>
+<link rel=stylesheet href=/lib/font-awesome/css/all.min.css>
+<script src=/lib/jquery/jquery.min.js></script>
+<script src=/js/main.js></script>
+<script src=/js/code-copy.js></script>
+</html>

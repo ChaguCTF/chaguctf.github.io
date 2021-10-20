@@ -1,3 +1,0 @@
-# chaguctf.github.io
-
-website

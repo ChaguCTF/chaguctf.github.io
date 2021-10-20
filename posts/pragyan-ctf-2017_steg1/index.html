@@ -1,0 +1,332 @@
+<!doctype html><html lang=en-us>
+<head>
+<link rel=preload href=/lib/font-awesome/webfonts/fa-brands-400.woff2 as=font type=font/woff2 crossorigin=anonymous>
+<link rel=preload href=/lib/font-awesome/webfonts/fa-regular-400.woff2 as=font type=font/woff2 crossorigin=anonymous>
+<link rel=preload href=/lib/font-awesome/webfonts/fa-solid-900.woff2 as=font type=font/woff2 crossorigin=anonymous>
+<link rel=preload href=/lib/JetBrainsMono/web/woff2/JetBrainsMono-Regular.woff2 as=font type=font/woff2 crossorigin=anonymous>
+<script type=text/javascript src=https://latest.cactus.chat/cactus.js></script>
+<link rel=stylesheet href=https://latest.cactus.chat/style.css type=text/css>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<title> Pragyan CTF 2017: Star Wars (100pts) | ChaGu CTF</title>
+<link rel=canonical href=https://chagu.org/posts/pragyan-ctf-2017_steg1/>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta name=robots content="all,follow">
+<meta name=googlebot content="index,follow,snippet,archive">
+<meta property="og:title" content="Pragyan CTF 2017: Star Wars (100pts)">
+<meta property="og:description" content="By: [noras] from ChalmersCTF
+Challenge Description : Don't search blindly. Look carefully and you will find what you are looking for. Hint! This challenge is specially made for blind persons :P  File : star-wars.jpg  Solution: Nothing speacial with the image when you look at it:
+Running strings reveal a bit encoded thing with 54 bits:
+100110 101010 101010 111010 100110 1010101 011101 010100 11110 Since the hint mention that it was made for a blind person I look you &ldquo;blind alphabet&rdquo; on google and i found that they are a part of a six-bit character code called Braille codes.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://chagu.org/posts/pragyan-ctf-2017_steg1/"><meta property="article:section" content="posts">
+<meta property="article:published_time" content="2017-03-05T11:22:32+02:00">
+<meta property="article:modified_time" content="2017-03-05T11:22:32+02:00">
+<meta name=twitter:card content="summary">
+<meta name=twitter:title content="Pragyan CTF 2017: Star Wars (100pts)">
+<meta name=twitter:description content="By: [noras] from ChalmersCTF
+Challenge Description : Don't search blindly. Look carefully and you will find what you are looking for. Hint! This challenge is specially made for blind persons :P  File : star-wars.jpg  Solution: Nothing speacial with the image when you look at it:
+Running strings reveal a bit encoded thing with 54 bits:
+100110 101010 101010 111010 100110 1010101 011101 010100 11110 Since the hint mention that it was made for a blind person I look you &ldquo;blind alphabet&rdquo; on google and i found that they are a part of a six-bit character code called Braille codes.">
+<link rel=stylesheet href=https://chagu.org/css/styles.877f0d187d777677210859d158f899b22bc9251cff14ab3f2aeaaf7e09c4b15a691db4d151e8f0be980792a40c8d658ffb0a5ed37ea53eccec5125ee4e6055b7.css integrity="sha512-h38NGH13dnchCFnRWPiZsivJJRz/FKs/KuqvfgnEsVppHbTRUejwvpgHkqQMjWWP+wpe036lPszsUSXuTmBVtw=="><!--[if lt IE 9]><script src=https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js></script>
+<script src=https://oss.maxcdn.com/respond/1.4.2/respond.min.js></script><![endif]-->
+<link rel=icon type=image/png href=https://chagu.org/images/favicon.ico>
+</head>
+<body class="max-width mx-auto px3 ltr">
+<div class="content index py4">
+<div id=header-post>
+<a id=menu-icon href=#><i class="fas fa-bars fa-lg"></i></a>
+<a id=menu-icon-tablet href=#><i class="fas fa-bars fa-lg"></i></a>
+<a id=top-icon-tablet href=# onclick="$('html, body').animate({scrollTop:0},'fast')" style=display:none aria-label="Top of Page"><i class="fas fa-chevron-up fa-lg"></i></a>
+<span id=menu>
+<span id=nav>
+<ul>
+<li><a href=/>Home</a></li>
+<li><a href=/posts>Writeups</a></li>
+<li><a href=/tags>Tags</a></li>
+<li><a href=/about>About</a></li>
+</ul>
+</span>
+<br>
+<span id=actions>
+<ul>
+<li>
+<a class=icon href=https://chagu.org/posts/pragyan-ctf-2017_web2/ aria-label=Previous>
+<i class="fas fa-chevron-left" aria-hidden=true onmouseover="$('#i-prev').toggle()" onmouseout="$('#i-prev').toggle()"></i>
+</a>
+</li>
+<li>
+<a class=icon href=https://chagu.org/posts/pragyan-ctf-2017_bin2/ aria-label=Next>
+<i class="fas fa-chevron-right" aria-hidden=true onmouseover="$('#i-next').toggle()" onmouseout="$('#i-next').toggle()"></i>
+</a>
+</li>
+<li>
+<a class=icon href=# onclick="$('html, body').animate({scrollTop:0},'fast')" aria-label="Top of Page">
+<i class="fas fa-chevron-up" aria-hidden=true onmouseover="$('#i-top').toggle()" onmouseout="$('#i-top').toggle()"></i>
+</a>
+</li>
+<li>
+<a class=icon href=# aria-label=Share>
+<i class="fas fa-share-alt" aria-hidden=true onmouseover="$('#i-share').toggle()" onmouseout="$('#i-share').toggle()" onclick="return $('#share').toggle(),!1"></i>
+</a>
+</li>
+</ul>
+<span id=i-prev class=info style=display:none>Previous post</span>
+<span id=i-next class=info style=display:none>Next post</span>
+<span id=i-top class=info style=display:none>Back to top</span>
+<span id=i-share class=info style=display:none>Share post</span>
+</span>
+<br>
+<div id=share style=display:none>
+<ul>
+<li>
+<a class=icon href="http://www.facebook.com/sharer.php?u=https%3a%2f%2fchagu.org%2fposts%2fpragyan-ctf-2017_steg1%2f" aria-label=Facebook>
+<i class="fab fa-facebook" aria-hidden=true></i>
+</a>
+</li>
+<li>
+<a class=icon href="https://twitter.com/share?url=https%3a%2f%2fchagu.org%2fposts%2fpragyan-ctf-2017_steg1%2f&text=Pragyan%20CTF%202017%3a%20Star%20Wars%20%28100pts%29" aria-label=Twitter>
+<i class="fab fa-twitter" aria-hidden=true></i>
+</a>
+</li>
+<li>
+<a class=icon href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2fchagu.org%2fposts%2fpragyan-ctf-2017_steg1%2f&title=Pragyan%20CTF%202017%3a%20Star%20Wars%20%28100pts%29" aria-label=Linkedin>
+<i class="fab fa-linkedin" aria-hidden=true></i>
+</a>
+</li>
+<li>
+<a class=icon href="https://pinterest.com/pin/create/bookmarklet/?url=https%3a%2f%2fchagu.org%2fposts%2fpragyan-ctf-2017_steg1%2f&is_video=false&description=Pragyan%20CTF%202017%3a%20Star%20Wars%20%28100pts%29" aria-label=Pinterest>
+<i class="fab fa-pinterest" aria-hidden=true></i>
+</a>
+</li>
+<li>
+<a class=icon href="mailto:?subject=Pragyan%20CTF%202017%3a%20Star%20Wars%20%28100pts%29&body=Check out this article: https%3a%2f%2fchagu.org%2fposts%2fpragyan-ctf-2017_steg1%2f" aria-label=Email>
+<i class="fas fa-envelope" aria-hidden=true></i>
+</a>
+</li>
+<li>
+<a class=icon href="https://getpocket.com/save?url=https%3a%2f%2fchagu.org%2fposts%2fpragyan-ctf-2017_steg1%2f&title=Pragyan%20CTF%202017%3a%20Star%20Wars%20%28100pts%29" aria-label=Pocket>
+<i class="fab fa-get-pocket" aria-hidden=true></i>
+</a>
+</li>
+<li>
+<a class=icon href="http://reddit.com/submit?url=https%3a%2f%2fchagu.org%2fposts%2fpragyan-ctf-2017_steg1%2f&title=Pragyan%20CTF%202017%3a%20Star%20Wars%20%28100pts%29" aria-label=reddit>
+<i class="fab fa-reddit" aria-hidden=true></i>
+</a>
+</li>
+<li>
+<a class=icon href="http://www.tumblr.com/share/link?url=https%3a%2f%2fchagu.org%2fposts%2fpragyan-ctf-2017_steg1%2f&name=Pragyan%20CTF%202017%3a%20Star%20Wars%20%28100pts%29&description=By%3a%20%5bnoras%5d%20from%20ChalmersCTF%0aChallenge%20Description%20%3a%20Don%27t%20search%20blindly.%20Look%20carefully%20and%20you%20will%20find%20what%20you%20are%20looking%20for.%20Hint%21%20This%20challenge%20is%20specially%20made%20for%20blind%20persons%20%3aP%20%20File%20%3a%20star-wars.jpg%20%20Solution%3a%20Nothing%20speacial%20with%20the%20image%20when%20you%20look%20at%20it%3a%0aRunning%20strings%20reveal%20a%20bit%20encoded%20thing%20with%2054%20bits%3a%0a100110%20101010%20101010%20111010%20100110%201010101%20011101%20010100%2011110%20Since%20the%20hint%20mention%20that%20it%20was%20made%20for%20a%20blind%20person%20I%20look%20you%20%26ldquo%3bblind%20alphabet%26rdquo%3b%20on%20google%20and%20i%20found%20that%20they%20are%20a%20part%20of%20a%20six-bit%20character%20code%20called%20Braille%20codes." aria-label=Tumblr>
+<i class="fab fa-tumblr" aria-hidden=true></i>
+</a>
+</li>
+<li>
+<a class=icon href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2fchagu.org%2fposts%2fpragyan-ctf-2017_steg1%2f&t=Pragyan%20CTF%202017%3a%20Star%20Wars%20%28100pts%29" aria-label="Hacker News">
+<i class="fab fa-hacker-news" aria-hidden=true></i>
+</a>
+</li>
+</ul>
+</div>
+<div id=toc>
+<nav id=TableOfContents>
+<ul>
+<li>
+<ul>
+<li></li>
+</ul>
+</li>
+</ul>
+</nav>
+</div>
+</span>
+</div>
+<article class=post itemscope itemtype=http://schema.org/BlogPosting>
+<header>
+<h1 class=posttitle itemprop="name headline">
+Pragyan CTF 2017: Star Wars (100pts)
+</h1>
+<div class=meta>
+<div class=postdate>
+<time datetime="2017-03-05 11:22:32 +0200 +0200" itemprop=datePublished>2017-03-05</time>
+</div>
+<div class=article-read-time>
+<i class="far fa-clock"></i>
+1 minute read
+</div>
+<div class=article-tag>
+<i class="fas fa-tag"></i>
+<a class=tag-link href=/tags/steganography rel=tag>Steganography</a>
+</div>
+</div>
+</header>
+<div class=content itemprop=articleBody>
+<p>By: [noras] from <a href=http://chalmersctf.se>ChalmersCTF</a></p>
+<h5 id=challenge-description->Challenge Description :</h5>
+<pre tabindex=0><code>Don't search blindly. Look carefully and you will find what you are looking for.
+Hint! This challenge is specially made for blind persons :P
+
+</code></pre><ul>
+<li>File : <a href=files/star-wars.jpg>star-wars.jpg</a></li>
+</ul>
+<h4 id=solution>Solution:</h4>
+<p>Nothing speacial with the image when you look at it:</p>
+<p><img src=files/star-wars.jpg alt=star-wars.jpg></p>
+<p>Running strings reveal a bit encoded thing with 54 bits:</p>
+<pre tabindex=0><code>100110 101010 101010 111010 100110 1010101 011101 010100 11110
+</code></pre><p>Since the hint mention that it was made for a blind person I look you &ldquo;blind alphabet&rdquo; on google and i found that they are a part of a six-bit character code called <strong>Braille codes</strong>.
+You can read more about it here <a href=https://en.wikipedia.org/wiki/Six-bit_character_code>https://en.wikipedia.org/wiki/Six-bit_character_code</a></p>
+<p>Looking at the tabel from the wikipedia page I made a small script that traslates that:</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>translate</span>(bin):
+    <span style=color:#66d9ef>for</span> key, value <span style=color:#f92672>in</span> dic<span style=color:#f92672>.</span>iteritems():
+        <span style=color:#66d9ef>if</span> value<span style=color:#f92672>==</span>bin:
+            <span style=color:#66d9ef>return</span> key
+    <span style=color:#66d9ef>return</span> bin
+s<span style=color:#f92672>=</span>[<span style=color:#e6db74>&#39;100110&#39;</span>,<span style=color:#e6db74>&#39;101010&#39;</span>,<span style=color:#e6db74>&#39;101010&#39;</span>,<span style=color:#e6db74>&#39;111010&#39;</span>,<span style=color:#e6db74>&#39;100110&#39;</span>,<span style=color:#e6db74>&#39;101010&#39;</span>,<span style=color:#e6db74>&#39;101110&#39;</span>,<span style=color:#e6db74>&#39;101010&#39;</span>,<span style=color:#e6db74>&#39;011110&#39;</span>]
+<span style=color:#75715e>#https://en.wikipedia.org/wiki/Six-bit_character_code</span>
+dic<span style=color:#f92672>=</span>{
+<span style=color:#e6db74>&#39;a&#39;</span>:<span style=color:#e6db74>&#39;100000&#39;</span>,
+<span style=color:#e6db74>&#39;b&#39;</span>:<span style=color:#e6db74>&#39;110000&#39;</span>,
+<span style=color:#e6db74>&#39;c&#39;</span>:<span style=color:#e6db74>&#39;100100&#39;</span>,
+<span style=color:#e6db74>&#39;d&#39;</span>:<span style=color:#e6db74>&#39;100110&#39;</span>,
+<span style=color:#e6db74>&#39;e&#39;</span>:<span style=color:#e6db74>&#39;100010&#39;</span>,
+<span style=color:#e6db74>&#39;f&#39;</span>:<span style=color:#e6db74>&#39;110100&#39;</span>,
+<span style=color:#e6db74>&#39;g&#39;</span>:<span style=color:#e6db74>&#39;110110&#39;</span>,
+<span style=color:#e6db74>&#39;h&#39;</span>:<span style=color:#e6db74>&#39;110010&#39;</span>,
+<span style=color:#e6db74>&#39;i&#39;</span>:<span style=color:#e6db74>&#39;010100&#39;</span>,
+<span style=color:#e6db74>&#39;j&#39;</span>:<span style=color:#e6db74>&#39;010100&#39;</span>,
+<span style=color:#e6db74>&#39;k&#39;</span>:<span style=color:#e6db74>&#39;101000&#39;</span>,
+<span style=color:#e6db74>&#39;l&#39;</span>:<span style=color:#e6db74>&#39;111000&#39;</span>,
+<span style=color:#e6db74>&#39;m&#39;</span>:<span style=color:#e6db74>&#39;101100&#39;</span>,
+<span style=color:#e6db74>&#39;n&#39;</span>:<span style=color:#e6db74>&#39;101110&#39;</span>,
+<span style=color:#e6db74>&#39;o&#39;</span>:<span style=color:#e6db74>&#39;101010&#39;</span>,
+<span style=color:#e6db74>&#39;p&#39;</span>:<span style=color:#e6db74>&#39;111100&#39;</span>,
+<span style=color:#e6db74>&#39;q&#39;</span>:<span style=color:#e6db74>&#39;111110&#39;</span>,
+<span style=color:#e6db74>&#39;r&#39;</span>:<span style=color:#e6db74>&#39;111010&#39;</span>,
+<span style=color:#e6db74>&#39;s&#39;</span>:<span style=color:#e6db74>&#39;011100&#39;</span>,
+<span style=color:#e6db74>&#39;t&#39;</span>:<span style=color:#e6db74>&#39;011110&#39;</span>,
+<span style=color:#e6db74>&#39;u&#39;</span>:<span style=color:#e6db74>&#39;101001&#39;</span>,
+<span style=color:#e6db74>&#39;v&#39;</span>:<span style=color:#e6db74>&#39;111001&#39;</span>,
+<span style=color:#e6db74>&#39;w&#39;</span>:<span style=color:#e6db74>&#39;010111&#39;</span>,
+<span style=color:#e6db74>&#39;x&#39;</span>:<span style=color:#e6db74>&#39;101101&#39;</span>,
+<span style=color:#e6db74>&#39;y&#39;</span>:<span style=color:#e6db74>&#39;101111&#39;</span>,
+<span style=color:#e6db74>&#39;z&#39;</span>:<span style=color:#e6db74>&#39;101011&#39;</span>
+}
+
+flag<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;&#34;</span>
+<span style=color:#66d9ef>for</span> ss <span style=color:#f92672>in</span> s:
+    flag<span style=color:#f92672>+=</span>translate(ss)
+print flag
+print <span style=color:#e6db74>&#39;pragyanctf{&#39;</span><span style=color:#f92672>+</span>flag<span style=color:#f92672>+</span><span style=color:#e6db74>&#39;}&#39;</span>
+print <span style=color:#e6db74>&#39;pragyanctf{&#39;</span><span style=color:#f92672>+</span>flag<span style=color:#f92672>.</span>upper()<span style=color:#f92672>+</span><span style=color:#e6db74>&#39;}&#39;</span>
+</code></pre></div><p>The output was:</p>
+<pre tabindex=0><code>doordonot
+pragyanctf{doordonot}
+pragyanctf{DOORDONOT}
+</code></pre><p>Unfortunatly that was not the flag. I know that <strong>steghide</strong> uses a password to protect files and strings hidden in images. This service can also be used online here <a href=https://futureboy.us/stegano/decinput.html>https://futureboy.us/stegano/decinput.html</a></p>
+<p>Using that with password <code>doordonot</code> I got a string that looks like base64. <code>YmVjb21lYWplZGltYXN0ZXJ5b3V3aWxs</code></p>
+<p>Decoding that, I got the flag <code>becomeajedimasteryouwill</code></p>
+</div>
+</article>
+<div id=footer-post-container>
+<div id=footer-post>
+<div id=nav-footer style=display:none>
+<ul>
+<li><a href=/>Home</a></li>
+<li><a href=/posts>Writeups</a></li>
+<li><a href=/tags>Tags</a></li>
+<li><a href=/about>About</a></li>
+</ul>
+</div>
+<div id=toc-footer style=display:none>
+<nav id=TableOfContents>
+<ul>
+<li>
+<ul>
+<li></li>
+</ul>
+</li>
+</ul>
+</nav>
+</div>
+<div id=share-footer style=display:none>
+<ul>
+<li>
+<a class=icon href="http://www.facebook.com/sharer.php?u=https%3a%2f%2fchagu.org%2fposts%2fpragyan-ctf-2017_steg1%2f" aria-label=Facebook>
+<i class="fab fa-facebook fa-lg" aria-hidden=true></i>
+</a>
+</li>
+<li>
+<a class=icon href="https://twitter.com/share?url=https%3a%2f%2fchagu.org%2fposts%2fpragyan-ctf-2017_steg1%2f&text=Pragyan%20CTF%202017%3a%20Star%20Wars%20%28100pts%29" aria-label=Twitter>
+<i class="fab fa-twitter fa-lg" aria-hidden=true></i>
+</a>
+</li>
+<li>
+<a class=icon href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2fchagu.org%2fposts%2fpragyan-ctf-2017_steg1%2f&title=Pragyan%20CTF%202017%3a%20Star%20Wars%20%28100pts%29" aria-label=Linkedin>
+<i class="fab fa-linkedin fa-lg" aria-hidden=true></i>
+</a>
+</li>
+<li>
+<a class=icon href="https://pinterest.com/pin/create/bookmarklet/?url=https%3a%2f%2fchagu.org%2fposts%2fpragyan-ctf-2017_steg1%2f&is_video=false&description=Pragyan%20CTF%202017%3a%20Star%20Wars%20%28100pts%29" aria-label=Pinterest>
+<i class="fab fa-pinterest fa-lg" aria-hidden=true></i>
+</a>
+</li>
+<li>
+<a class=icon href="mailto:?subject=Pragyan%20CTF%202017%3a%20Star%20Wars%20%28100pts%29&body=Check out this article: https%3a%2f%2fchagu.org%2fposts%2fpragyan-ctf-2017_steg1%2f" aria-label=Email>
+<i class="fas fa-envelope fa-lg" aria-hidden=true></i>
+</a>
+</li>
+<li>
+<a class=icon href="https://getpocket.com/save?url=https%3a%2f%2fchagu.org%2fposts%2fpragyan-ctf-2017_steg1%2f&title=Pragyan%20CTF%202017%3a%20Star%20Wars%20%28100pts%29" aria-label=Pocket>
+<i class="fab fa-get-pocket fa-lg" aria-hidden=true></i>
+</a>
+</li>
+<li>
+<a class=icon href="http://reddit.com/submit?url=https%3a%2f%2fchagu.org%2fposts%2fpragyan-ctf-2017_steg1%2f&title=Pragyan%20CTF%202017%3a%20Star%20Wars%20%28100pts%29" aria-label=reddit>
+<i class="fab fa-reddit fa-lg" aria-hidden=true></i>
+</a>
+</li>
+<li>
+<a class=icon href="http://www.tumblr.com/share/link?url=https%3a%2f%2fchagu.org%2fposts%2fpragyan-ctf-2017_steg1%2f&name=Pragyan%20CTF%202017%3a%20Star%20Wars%20%28100pts%29&description=By%3a%20%5bnoras%5d%20from%20ChalmersCTF%0aChallenge%20Description%20%3a%20Don%27t%20search%20blindly.%20Look%20carefully%20and%20you%20will%20find%20what%20you%20are%20looking%20for.%20Hint%21%20This%20challenge%20is%20specially%20made%20for%20blind%20persons%20%3aP%20%20File%20%3a%20star-wars.jpg%20%20Solution%3a%20Nothing%20speacial%20with%20the%20image%20when%20you%20look%20at%20it%3a%0aRunning%20strings%20reveal%20a%20bit%20encoded%20thing%20with%2054%20bits%3a%0a100110%20101010%20101010%20111010%20100110%201010101%20011101%20010100%2011110%20Since%20the%20hint%20mention%20that%20it%20was%20made%20for%20a%20blind%20person%20I%20look%20you%20%26ldquo%3bblind%20alphabet%26rdquo%3b%20on%20google%20and%20i%20found%20that%20they%20are%20a%20part%20of%20a%20six-bit%20character%20code%20called%20Braille%20codes." aria-label=Tumblr>
+<i class="fab fa-tumblr fa-lg" aria-hidden=true></i>
+</a>
+</li>
+<li>
+<a class=icon href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2fchagu.org%2fposts%2fpragyan-ctf-2017_steg1%2f&t=Pragyan%20CTF%202017%3a%20Star%20Wars%20%28100pts%29" aria-label="Hacker News">
+<i class="fab fa-hacker-news fa-lg" aria-hidden=true></i>
+</a>
+</li>
+</ul>
+</div>
+<div id=actions-footer>
+<a id=menu-toggle class=icon href=# onclick="return $('#nav-footer').toggle(),!1" aria-label=Menu>
+<i class="fas fa-bars fa-lg" aria-hidden=true></i> Menu</a>
+<a id=toc-toggle class=icon href=# onclick="return $('#toc-footer').toggle(),!1" aria-label=TOC>
+<i class="fas fa-list fa-lg" aria-hidden=true></i> TOC</a>
+<a id=share-toggle class=icon href=# onclick="return $('#share-footer').toggle(),!1" aria-label=Share>
+<i class="fas fa-share-alt fa-lg" aria-hidden=true></i> share</a>
+<a id=top style=display:none class=icon href=# onclick="$('html, body').animate({scrollTop:0},'fast')" aria-label="Top of Page">
+<i class="fas fa-chevron-up fa-lg" aria-hidden=true></i> Top</a>
+</div>
+</div>
+</div>
+<footer id=footer>
+<div class=footer-left>
+Copyright &copy; 2021 ChaGu CTF
+</div>
+<div class=footer-right>
+<nav>
+<ul>
+<li><a href=/>Home</a></li>
+<li><a href=/posts>Writeups</a></li>
+<li><a href=/tags>Tags</a></li>
+<li><a href=/about>About</a></li>
+</ul>
+</nav>
+</div>
+</footer>
+</div>
+</body>
+<link rel=stylesheet href=/lib/font-awesome/css/all.min.css>
+<script src=/lib/jquery/jquery.min.js></script>
+<script src=/js/main.js></script>
+<script src=/js/code-copy.js></script>
+</html>

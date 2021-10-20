@@ -1,0 +1,301 @@
+<!doctype html><html lang=en-us>
+<head>
+<link rel=preload href=/lib/font-awesome/webfonts/fa-brands-400.woff2 as=font type=font/woff2 crossorigin=anonymous>
+<link rel=preload href=/lib/font-awesome/webfonts/fa-regular-400.woff2 as=font type=font/woff2 crossorigin=anonymous>
+<link rel=preload href=/lib/font-awesome/webfonts/fa-solid-900.woff2 as=font type=font/woff2 crossorigin=anonymous>
+<link rel=preload href=/lib/JetBrainsMono/web/woff2/JetBrainsMono-Regular.woff2 as=font type=font/woff2 crossorigin=anonymous>
+<script type=text/javascript src=https://latest.cactus.chat/cactus.js></script>
+<link rel=stylesheet href=https://latest.cactus.chat/style.css type=text/css>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<title> Pragyan CTF 2017: The Vault (75pts) | ChaGu CTF</title>
+<link rel=canonical href=https://chagu.org/posts/pragyan-ctf-2017_misc2/>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta name=robots content="all,follow">
+<meta name=googlebot content="index,follow,snippet,archive">
+<meta property="og:title" content="Pragyan CTF 2017: The Vault (75pts)">
+<meta property="og:description" content="By: ChalmersCTF
+Challenge Description : [!@# a-z $%^ A-Z &* 0-9] [1,3] File : file
+Solution: Running file  on the included file revealed that its a keepass file. And the regex seems to be the clue about the password.
+$ file file file.kdb: Keepass password database 1.x KDB, 3 groups, 4 entries, 50000 key transformation rounds So we generate passwordlist using the regex
+#!/usr/bin/env python import string import itertools table = string.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://chagu.org/posts/pragyan-ctf-2017_misc2/"><meta property="article:section" content="posts">
+<meta property="article:published_time" content="2017-03-05T11:22:32+02:00">
+<meta property="article:modified_time" content="2017-03-05T11:22:32+02:00">
+<meta name=twitter:card content="summary">
+<meta name=twitter:title content="Pragyan CTF 2017: The Vault (75pts)">
+<meta name=twitter:description content="By: ChalmersCTF
+Challenge Description : [!@# a-z $%^ A-Z &* 0-9] [1,3] File : file
+Solution: Running file  on the included file revealed that its a keepass file. And the regex seems to be the clue about the password.
+$ file file file.kdb: Keepass password database 1.x KDB, 3 groups, 4 entries, 50000 key transformation rounds So we generate passwordlist using the regex
+#!/usr/bin/env python import string import itertools table = string.">
+<link rel=stylesheet href=https://chagu.org/css/styles.877f0d187d777677210859d158f899b22bc9251cff14ab3f2aeaaf7e09c4b15a691db4d151e8f0be980792a40c8d658ffb0a5ed37ea53eccec5125ee4e6055b7.css integrity="sha512-h38NGH13dnchCFnRWPiZsivJJRz/FKs/KuqvfgnEsVppHbTRUejwvpgHkqQMjWWP+wpe036lPszsUSXuTmBVtw=="><!--[if lt IE 9]><script src=https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js></script>
+<script src=https://oss.maxcdn.com/respond/1.4.2/respond.min.js></script><![endif]-->
+<link rel=icon type=image/png href=https://chagu.org/images/favicon.ico>
+</head>
+<body class="max-width mx-auto px3 ltr">
+<div class="content index py4">
+<div id=header-post>
+<a id=menu-icon href=#><i class="fas fa-bars fa-lg"></i></a>
+<a id=menu-icon-tablet href=#><i class="fas fa-bars fa-lg"></i></a>
+<a id=top-icon-tablet href=# onclick="$('html, body').animate({scrollTop:0},'fast')" style=display:none aria-label="Top of Page"><i class="fas fa-chevron-up fa-lg"></i></a>
+<span id=menu>
+<span id=nav>
+<ul>
+<li><a href=/>Home</a></li>
+<li><a href=/posts>Writeups</a></li>
+<li><a href=/tags>Tags</a></li>
+<li><a href=/about>About</a></li>
+</ul>
+</span>
+<br>
+<span id=actions>
+<ul>
+<li>
+<a class=icon href=https://chagu.org/posts/nullcon_2017_crypto2/ aria-label=Previous>
+<i class="fas fa-chevron-left" aria-hidden=true onmouseover="$('#i-prev').toggle()" onmouseout="$('#i-prev').toggle()"></i>
+</a>
+</li>
+<li>
+<a class=icon href=https://chagu.org/posts/pragyan-ctf-2017_for3/ aria-label=Next>
+<i class="fas fa-chevron-right" aria-hidden=true onmouseover="$('#i-next').toggle()" onmouseout="$('#i-next').toggle()"></i>
+</a>
+</li>
+<li>
+<a class=icon href=# onclick="$('html, body').animate({scrollTop:0},'fast')" aria-label="Top of Page">
+<i class="fas fa-chevron-up" aria-hidden=true onmouseover="$('#i-top').toggle()" onmouseout="$('#i-top').toggle()"></i>
+</a>
+</li>
+<li>
+<a class=icon href=# aria-label=Share>
+<i class="fas fa-share-alt" aria-hidden=true onmouseover="$('#i-share').toggle()" onmouseout="$('#i-share').toggle()" onclick="return $('#share').toggle(),!1"></i>
+</a>
+</li>
+</ul>
+<span id=i-prev class=info style=display:none>Previous post</span>
+<span id=i-next class=info style=display:none>Next post</span>
+<span id=i-top class=info style=display:none>Back to top</span>
+<span id=i-share class=info style=display:none>Share post</span>
+</span>
+<br>
+<div id=share style=display:none>
+<ul>
+<li>
+<a class=icon href="http://www.facebook.com/sharer.php?u=https%3a%2f%2fchagu.org%2fposts%2fpragyan-ctf-2017_misc2%2f" aria-label=Facebook>
+<i class="fab fa-facebook" aria-hidden=true></i>
+</a>
+</li>
+<li>
+<a class=icon href="https://twitter.com/share?url=https%3a%2f%2fchagu.org%2fposts%2fpragyan-ctf-2017_misc2%2f&text=Pragyan%20CTF%202017%3a%20The%20Vault%20%2875pts%29" aria-label=Twitter>
+<i class="fab fa-twitter" aria-hidden=true></i>
+</a>
+</li>
+<li>
+<a class=icon href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2fchagu.org%2fposts%2fpragyan-ctf-2017_misc2%2f&title=Pragyan%20CTF%202017%3a%20The%20Vault%20%2875pts%29" aria-label=Linkedin>
+<i class="fab fa-linkedin" aria-hidden=true></i>
+</a>
+</li>
+<li>
+<a class=icon href="https://pinterest.com/pin/create/bookmarklet/?url=https%3a%2f%2fchagu.org%2fposts%2fpragyan-ctf-2017_misc2%2f&is_video=false&description=Pragyan%20CTF%202017%3a%20The%20Vault%20%2875pts%29" aria-label=Pinterest>
+<i class="fab fa-pinterest" aria-hidden=true></i>
+</a>
+</li>
+<li>
+<a class=icon href="mailto:?subject=Pragyan%20CTF%202017%3a%20The%20Vault%20%2875pts%29&body=Check out this article: https%3a%2f%2fchagu.org%2fposts%2fpragyan-ctf-2017_misc2%2f" aria-label=Email>
+<i class="fas fa-envelope" aria-hidden=true></i>
+</a>
+</li>
+<li>
+<a class=icon href="https://getpocket.com/save?url=https%3a%2f%2fchagu.org%2fposts%2fpragyan-ctf-2017_misc2%2f&title=Pragyan%20CTF%202017%3a%20The%20Vault%20%2875pts%29" aria-label=Pocket>
+<i class="fab fa-get-pocket" aria-hidden=true></i>
+</a>
+</li>
+<li>
+<a class=icon href="http://reddit.com/submit?url=https%3a%2f%2fchagu.org%2fposts%2fpragyan-ctf-2017_misc2%2f&title=Pragyan%20CTF%202017%3a%20The%20Vault%20%2875pts%29" aria-label=reddit>
+<i class="fab fa-reddit" aria-hidden=true></i>
+</a>
+</li>
+<li>
+<a class=icon href="http://www.tumblr.com/share/link?url=https%3a%2f%2fchagu.org%2fposts%2fpragyan-ctf-2017_misc2%2f&name=Pragyan%20CTF%202017%3a%20The%20Vault%20%2875pts%29&description=By%3a%20ChalmersCTF%0aChallenge%20Description%20%3a%20%5b%21%40%23%20a-z%20%24%25%5e%20A-Z%20%26amp%3b%2a%200-9%5d%20%5b1%2c3%5d%20File%20%3a%20file%0aSolution%3a%20Running%20file%20%20on%20the%20included%20file%20revealed%20that%20its%20a%20keepass%20file.%20And%20the%20regex%20seems%20to%20be%20the%20clue%20about%20the%20password.%0a%24%20file%20file%20file.kdb%3a%20Keepass%20password%20database%201.x%20KDB%2c%203%20groups%2c%204%20entries%2c%2050000%20key%20transformation%20rounds%20So%20we%20generate%20passwordlist%20using%20the%20regex%0a%23%21%2fusr%2fbin%2fenv%20python%20import%20string%20import%20itertools%20table%20%3d%20string." aria-label=Tumblr>
+<i class="fab fa-tumblr" aria-hidden=true></i>
+</a>
+</li>
+<li>
+<a class=icon href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2fchagu.org%2fposts%2fpragyan-ctf-2017_misc2%2f&t=Pragyan%20CTF%202017%3a%20The%20Vault%20%2875pts%29" aria-label="Hacker News">
+<i class="fab fa-hacker-news" aria-hidden=true></i>
+</a>
+</li>
+</ul>
+</div>
+<div id=toc>
+<nav id=TableOfContents>
+<ul>
+<li>
+<ul>
+<li></li>
+</ul>
+</li>
+</ul>
+</nav>
+</div>
+</span>
+</div>
+<article class=post itemscope itemtype=http://schema.org/BlogPosting>
+<header>
+<h1 class=posttitle itemprop="name headline">
+Pragyan CTF 2017: The Vault (75pts)
+</h1>
+<div class=meta>
+<div class=postdate>
+<time datetime="2017-03-05 11:22:32 +0200 +0200" itemprop=datePublished>2017-03-05</time>
+</div>
+<div class=article-read-time>
+<i class="far fa-clock"></i>
+1 minute read
+</div>
+<div class=article-tag>
+<i class="fas fa-tag"></i>
+<a class=tag-link href=/tags/forensics rel=tag>Forensics</a>
+</div>
+</div>
+</header>
+<div class=content itemprop=articleBody>
+<p>By: <a href=http://chalmersctf.se>ChalmersCTF</a></p>
+<h5 id=challenge-description->Challenge Description :</h5>
+<pre tabindex=0><code>[!@# a-z $%^ A-Z &amp;* 0-9] [1,3]
+</code></pre><p>File : <a href=files/file.kdb>file</a></p>
+<h4 id=solution>Solution:</h4>
+<p>Running <code>file </code> on the included file revealed that its a keepass file. And the regex seems to be the clue about the password.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>$ file file
+file.kdb: Keepass password database 1.x KDB, <span style=color:#ae81ff>3</span> groups, <span style=color:#ae81ff>4</span> entries, <span style=color:#ae81ff>50000</span> key transformation rounds
+
+</code></pre></div><p>So we generate <a href=files/combos.txt>passwordlist</a> using the regex</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#75715e>#!/usr/bin/env python</span>
+<span style=color:#f92672>import</span> string
+<span style=color:#f92672>import</span> itertools
+
+table <span style=color:#f92672>=</span> string<span style=color:#f92672>.</span>ascii_letters <span style=color:#f92672>+</span> string<span style=color:#f92672>.</span>digits <span style=color:#f92672>+</span> <span style=color:#e6db74>&#34;!@# $%^&amp;*&#34;</span>
+
+<span style=color:#66d9ef>with</span> open(<span style=color:#e6db74>&#34;combos.txt&#34;</span>,<span style=color:#e6db74>&#34;w+&#34;</span>) <span style=color:#66d9ef>as</span> file:
+    <span style=color:#66d9ef>for</span> x <span style=color:#f92672>in</span> itertools<span style=color:#f92672>.</span>combinations(table, <span style=color:#ae81ff>3</span>):
+        file<span style=color:#f92672>.</span>write(<span style=color:#e6db74>&#34;&#34;</span><span style=color:#f92672>.</span>join(x)<span style=color:#f92672>+</span><span style=color:#e6db74>&#34;</span><span style=color:#ae81ff>\n</span><span style=color:#e6db74>&#34;</span>)
+</code></pre></div><p>Extract the key from the file and run john to bruteforce it.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>$ mv file file.kdb
+$ keepass2john file.kdb &gt; keypasskey
+$ john --wordlist<span style=color:#f92672>=</span>combos.txt  --format<span style=color:#f92672>=</span>keepass keypasskey
+    Session completed
+$ john  keypasskey --show
+file.kdb:k18
+
+<span style=color:#ae81ff>1</span> password hash cracked, <span style=color:#ae81ff>0</span> left
+
+</code></pre></div><p>That revealed the password <code>k18</code></p>
+<p>Opening the file using <a href=http://keepass.info/download.html>http://keepass.info/download.html</a> we could see the flag.</p>
+<p><img src=files/cap.png alt=flag></p>
+</div>
+</article>
+<div id=footer-post-container>
+<div id=footer-post>
+<div id=nav-footer style=display:none>
+<ul>
+<li><a href=/>Home</a></li>
+<li><a href=/posts>Writeups</a></li>
+<li><a href=/tags>Tags</a></li>
+<li><a href=/about>About</a></li>
+</ul>
+</div>
+<div id=toc-footer style=display:none>
+<nav id=TableOfContents>
+<ul>
+<li>
+<ul>
+<li></li>
+</ul>
+</li>
+</ul>
+</nav>
+</div>
+<div id=share-footer style=display:none>
+<ul>
+<li>
+<a class=icon href="http://www.facebook.com/sharer.php?u=https%3a%2f%2fchagu.org%2fposts%2fpragyan-ctf-2017_misc2%2f" aria-label=Facebook>
+<i class="fab fa-facebook fa-lg" aria-hidden=true></i>
+</a>
+</li>
+<li>
+<a class=icon href="https://twitter.com/share?url=https%3a%2f%2fchagu.org%2fposts%2fpragyan-ctf-2017_misc2%2f&text=Pragyan%20CTF%202017%3a%20The%20Vault%20%2875pts%29" aria-label=Twitter>
+<i class="fab fa-twitter fa-lg" aria-hidden=true></i>
+</a>
+</li>
+<li>
+<a class=icon href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2fchagu.org%2fposts%2fpragyan-ctf-2017_misc2%2f&title=Pragyan%20CTF%202017%3a%20The%20Vault%20%2875pts%29" aria-label=Linkedin>
+<i class="fab fa-linkedin fa-lg" aria-hidden=true></i>
+</a>
+</li>
+<li>
+<a class=icon href="https://pinterest.com/pin/create/bookmarklet/?url=https%3a%2f%2fchagu.org%2fposts%2fpragyan-ctf-2017_misc2%2f&is_video=false&description=Pragyan%20CTF%202017%3a%20The%20Vault%20%2875pts%29" aria-label=Pinterest>
+<i class="fab fa-pinterest fa-lg" aria-hidden=true></i>
+</a>
+</li>
+<li>
+<a class=icon href="mailto:?subject=Pragyan%20CTF%202017%3a%20The%20Vault%20%2875pts%29&body=Check out this article: https%3a%2f%2fchagu.org%2fposts%2fpragyan-ctf-2017_misc2%2f" aria-label=Email>
+<i class="fas fa-envelope fa-lg" aria-hidden=true></i>
+</a>
+</li>
+<li>
+<a class=icon href="https://getpocket.com/save?url=https%3a%2f%2fchagu.org%2fposts%2fpragyan-ctf-2017_misc2%2f&title=Pragyan%20CTF%202017%3a%20The%20Vault%20%2875pts%29" aria-label=Pocket>
+<i class="fab fa-get-pocket fa-lg" aria-hidden=true></i>
+</a>
+</li>
+<li>
+<a class=icon href="http://reddit.com/submit?url=https%3a%2f%2fchagu.org%2fposts%2fpragyan-ctf-2017_misc2%2f&title=Pragyan%20CTF%202017%3a%20The%20Vault%20%2875pts%29" aria-label=reddit>
+<i class="fab fa-reddit fa-lg" aria-hidden=true></i>
+</a>
+</li>
+<li>
+<a class=icon href="http://www.tumblr.com/share/link?url=https%3a%2f%2fchagu.org%2fposts%2fpragyan-ctf-2017_misc2%2f&name=Pragyan%20CTF%202017%3a%20The%20Vault%20%2875pts%29&description=By%3a%20ChalmersCTF%0aChallenge%20Description%20%3a%20%5b%21%40%23%20a-z%20%24%25%5e%20A-Z%20%26amp%3b%2a%200-9%5d%20%5b1%2c3%5d%20File%20%3a%20file%0aSolution%3a%20Running%20file%20%20on%20the%20included%20file%20revealed%20that%20its%20a%20keepass%20file.%20And%20the%20regex%20seems%20to%20be%20the%20clue%20about%20the%20password.%0a%24%20file%20file%20file.kdb%3a%20Keepass%20password%20database%201.x%20KDB%2c%203%20groups%2c%204%20entries%2c%2050000%20key%20transformation%20rounds%20So%20we%20generate%20passwordlist%20using%20the%20regex%0a%23%21%2fusr%2fbin%2fenv%20python%20import%20string%20import%20itertools%20table%20%3d%20string." aria-label=Tumblr>
+<i class="fab fa-tumblr fa-lg" aria-hidden=true></i>
+</a>
+</li>
+<li>
+<a class=icon href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2fchagu.org%2fposts%2fpragyan-ctf-2017_misc2%2f&t=Pragyan%20CTF%202017%3a%20The%20Vault%20%2875pts%29" aria-label="Hacker News">
+<i class="fab fa-hacker-news fa-lg" aria-hidden=true></i>
+</a>
+</li>
+</ul>
+</div>
+<div id=actions-footer>
+<a id=menu-toggle class=icon href=# onclick="return $('#nav-footer').toggle(),!1" aria-label=Menu>
+<i class="fas fa-bars fa-lg" aria-hidden=true></i> Menu</a>
+<a id=toc-toggle class=icon href=# onclick="return $('#toc-footer').toggle(),!1" aria-label=TOC>
+<i class="fas fa-list fa-lg" aria-hidden=true></i> TOC</a>
+<a id=share-toggle class=icon href=# onclick="return $('#share-footer').toggle(),!1" aria-label=Share>
+<i class="fas fa-share-alt fa-lg" aria-hidden=true></i> share</a>
+<a id=top style=display:none class=icon href=# onclick="$('html, body').animate({scrollTop:0},'fast')" aria-label="Top of Page">
+<i class="fas fa-chevron-up fa-lg" aria-hidden=true></i> Top</a>
+</div>
+</div>
+</div>
+<footer id=footer>
+<div class=footer-left>
+Copyright &copy; 2021 ChaGu CTF
+</div>
+<div class=footer-right>
+<nav>
+<ul>
+<li><a href=/>Home</a></li>
+<li><a href=/posts>Writeups</a></li>
+<li><a href=/tags>Tags</a></li>
+<li><a href=/about>About</a></li>
+</ul>
+</nav>
+</div>
+</footer>
+</div>
+</body>
+<link rel=stylesheet href=/lib/font-awesome/css/all.min.css>
+<script src=/lib/jquery/jquery.min.js></script>
+<script src=/js/main.js></script>
+<script src=/js/code-copy.js></script>
+</html>

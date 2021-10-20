@@ -1,0 +1,318 @@
+<!doctype html><html lang=en-us>
+<head>
+<link rel=preload href=/lib/font-awesome/webfonts/fa-brands-400.woff2 as=font type=font/woff2 crossorigin=anonymous>
+<link rel=preload href=/lib/font-awesome/webfonts/fa-regular-400.woff2 as=font type=font/woff2 crossorigin=anonymous>
+<link rel=preload href=/lib/font-awesome/webfonts/fa-solid-900.woff2 as=font type=font/woff2 crossorigin=anonymous>
+<link rel=preload href=/lib/JetBrainsMono/web/woff2/JetBrainsMono-Regular.woff2 as=font type=font/woff2 crossorigin=anonymous>
+<script type=text/javascript src=https://latest.cactus.chat/cactus.js></script>
+<link rel=stylesheet href=https://latest.cactus.chat/style.css type=text/css>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<title> AlexCTF CR3: What is this encryption? 150p | ChaGu CTF</title>
+<link rel=canonical href=https://chagu.org/posts/alexctf-2017-02-05_cr3/>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta name=robots content="all,follow">
+<meta name=googlebot content="index,follow,snippet,archive">
+<meta property="og:title" content="AlexCTF CR3: What is this encryption? 150p">
+<meta property="og:description" content="Fady assumed this time that you will be so n00b to tell what encryption he is using he send the following note to his friend in plain sight:
+p=0xa6055ec186de51800ddd6fcbf0192384ff42d707a55f57af4fcfb0d1dc7bd97055e8275cd4b78ec63c5d592f567c66393a061324aa2e6a8d8fc2a910cbee1ed9 q=0xfa0f9463ea0a93b929c099320d31c277e0b0dbc65b189ed76124f5a1218f5d91fd0102a4c8de11f28be5e4d0ae91ab319f4537e97ed74bc663e972a4a9119307 e=0x6d1fdab4ce3217b3fc32c9ed480a31d067fd57d93a9ab52b472dc393ab7852fbcb11abbebfd6aaae8032db1316dc22d3f7c3d631e24df13ef23d3b381a1c3e04abcc745d402ee3a031ac2718fae63b240837b4f657f29ca4702da9af22a3a019d68904a969ddb01bcf941df70af042f4fae5cbeb9c2151b324f387e525094c41 c=0x7fe1a4f743675d1987d25d38111fae0f78bbea6852cba5beda47db76d119a3efe24cb04b9449f53becd43b0b46e269826a983f832abb53b7a7e24a43ad15378344ed5c20f51e268186d24c76050c1e73647523bd5f91d9b6ad3e86bbf9126588b1dee21e6997372e36c3e74284734748891829665086e0dc523ed23c386bb520 He is underestimating our crypto skills!
+Recover d This challenge requires some knowledge about basic crypto algorithms. Based on the variables that Fady sent we assumed this was RSA. A formal definition of the RSA algorithm can be expressed as the following:">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://chagu.org/posts/alexctf-2017-02-05_cr3/"><meta property="article:section" content="posts">
+<meta property="article:published_time" content="2017-02-05T11:22:32+02:00">
+<meta property="article:modified_time" content="2017-02-05T11:22:32+02:00">
+<meta name=twitter:card content="summary">
+<meta name=twitter:title content="AlexCTF CR3: What is this encryption? 150p">
+<meta name=twitter:description content="Fady assumed this time that you will be so n00b to tell what encryption he is using he send the following note to his friend in plain sight:
+p=0xa6055ec186de51800ddd6fcbf0192384ff42d707a55f57af4fcfb0d1dc7bd97055e8275cd4b78ec63c5d592f567c66393a061324aa2e6a8d8fc2a910cbee1ed9 q=0xfa0f9463ea0a93b929c099320d31c277e0b0dbc65b189ed76124f5a1218f5d91fd0102a4c8de11f28be5e4d0ae91ab319f4537e97ed74bc663e972a4a9119307 e=0x6d1fdab4ce3217b3fc32c9ed480a31d067fd57d93a9ab52b472dc393ab7852fbcb11abbebfd6aaae8032db1316dc22d3f7c3d631e24df13ef23d3b381a1c3e04abcc745d402ee3a031ac2718fae63b240837b4f657f29ca4702da9af22a3a019d68904a969ddb01bcf941df70af042f4fae5cbeb9c2151b324f387e525094c41 c=0x7fe1a4f743675d1987d25d38111fae0f78bbea6852cba5beda47db76d119a3efe24cb04b9449f53becd43b0b46e269826a983f832abb53b7a7e24a43ad15378344ed5c20f51e268186d24c76050c1e73647523bd5f91d9b6ad3e86bbf9126588b1dee21e6997372e36c3e74284734748891829665086e0dc523ed23c386bb520 He is underestimating our crypto skills!
+Recover d This challenge requires some knowledge about basic crypto algorithms. Based on the variables that Fady sent we assumed this was RSA. A formal definition of the RSA algorithm can be expressed as the following:">
+<link rel=stylesheet href=https://chagu.org/css/styles.877f0d187d777677210859d158f899b22bc9251cff14ab3f2aeaaf7e09c4b15a691db4d151e8f0be980792a40c8d658ffb0a5ed37ea53eccec5125ee4e6055b7.css integrity="sha512-h38NGH13dnchCFnRWPiZsivJJRz/FKs/KuqvfgnEsVppHbTRUejwvpgHkqQMjWWP+wpe036lPszsUSXuTmBVtw=="><!--[if lt IE 9]><script src=https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js></script>
+<script src=https://oss.maxcdn.com/respond/1.4.2/respond.min.js></script><![endif]-->
+<link rel=icon type=image/png href=https://chagu.org/images/favicon.ico>
+</head>
+<body class="max-width mx-auto px3 ltr">
+<div class="content index py4">
+<div id=header-post>
+<a id=menu-icon href=#><i class="fas fa-bars fa-lg"></i></a>
+<a id=menu-icon-tablet href=#><i class="fas fa-bars fa-lg"></i></a>
+<a id=top-icon-tablet href=# onclick="$('html, body').animate({scrollTop:0},'fast')" style=display:none aria-label="Top of Page"><i class="fas fa-chevron-up fa-lg"></i></a>
+<span id=menu>
+<span id=nav>
+<ul>
+<li><a href=/>Home</a></li>
+<li><a href=/posts>Writeups</a></li>
+<li><a href=/tags>Tags</a></li>
+<li><a href=/about>About</a></li>
+</ul>
+</span>
+<br>
+<span id=actions>
+<ul>
+<li>
+<a class=icon href=https://chagu.org/posts/alexctf-2017-02-05_cr4/ aria-label=Previous>
+<i class="fas fa-chevron-left" aria-hidden=true onmouseover="$('#i-prev').toggle()" onmouseout="$('#i-prev').toggle()"></i>
+</a>
+</li>
+<li>
+<a class=icon href=https://chagu.org/posts/nullcon_2017_programming1/ aria-label=Next>
+<i class="fas fa-chevron-right" aria-hidden=true onmouseover="$('#i-next').toggle()" onmouseout="$('#i-next').toggle()"></i>
+</a>
+</li>
+<li>
+<a class=icon href=# onclick="$('html, body').animate({scrollTop:0},'fast')" aria-label="Top of Page">
+<i class="fas fa-chevron-up" aria-hidden=true onmouseover="$('#i-top').toggle()" onmouseout="$('#i-top').toggle()"></i>
+</a>
+</li>
+<li>
+<a class=icon href=# aria-label=Share>
+<i class="fas fa-share-alt" aria-hidden=true onmouseover="$('#i-share').toggle()" onmouseout="$('#i-share').toggle()" onclick="return $('#share').toggle(),!1"></i>
+</a>
+</li>
+</ul>
+<span id=i-prev class=info style=display:none>Previous post</span>
+<span id=i-next class=info style=display:none>Next post</span>
+<span id=i-top class=info style=display:none>Back to top</span>
+<span id=i-share class=info style=display:none>Share post</span>
+</span>
+<br>
+<div id=share style=display:none>
+<ul>
+<li>
+<a class=icon href="http://www.facebook.com/sharer.php?u=https%3a%2f%2fchagu.org%2fposts%2falexctf-2017-02-05_cr3%2f" aria-label=Facebook>
+<i class="fab fa-facebook" aria-hidden=true></i>
+</a>
+</li>
+<li>
+<a class=icon href="https://twitter.com/share?url=https%3a%2f%2fchagu.org%2fposts%2falexctf-2017-02-05_cr3%2f&text=AlexCTF%20CR3%3a%20What%20is%20this%20encryption%3f%20150p" aria-label=Twitter>
+<i class="fab fa-twitter" aria-hidden=true></i>
+</a>
+</li>
+<li>
+<a class=icon href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2fchagu.org%2fposts%2falexctf-2017-02-05_cr3%2f&title=AlexCTF%20CR3%3a%20What%20is%20this%20encryption%3f%20150p" aria-label=Linkedin>
+<i class="fab fa-linkedin" aria-hidden=true></i>
+</a>
+</li>
+<li>
+<a class=icon href="https://pinterest.com/pin/create/bookmarklet/?url=https%3a%2f%2fchagu.org%2fposts%2falexctf-2017-02-05_cr3%2f&is_video=false&description=AlexCTF%20CR3%3a%20What%20is%20this%20encryption%3f%20150p" aria-label=Pinterest>
+<i class="fab fa-pinterest" aria-hidden=true></i>
+</a>
+</li>
+<li>
+<a class=icon href="mailto:?subject=AlexCTF%20CR3%3a%20What%20is%20this%20encryption%3f%20150p&body=Check out this article: https%3a%2f%2fchagu.org%2fposts%2falexctf-2017-02-05_cr3%2f" aria-label=Email>
+<i class="fas fa-envelope" aria-hidden=true></i>
+</a>
+</li>
+<li>
+<a class=icon href="https://getpocket.com/save?url=https%3a%2f%2fchagu.org%2fposts%2falexctf-2017-02-05_cr3%2f&title=AlexCTF%20CR3%3a%20What%20is%20this%20encryption%3f%20150p" aria-label=Pocket>
+<i class="fab fa-get-pocket" aria-hidden=true></i>
+</a>
+</li>
+<li>
+<a class=icon href="http://reddit.com/submit?url=https%3a%2f%2fchagu.org%2fposts%2falexctf-2017-02-05_cr3%2f&title=AlexCTF%20CR3%3a%20What%20is%20this%20encryption%3f%20150p" aria-label=reddit>
+<i class="fab fa-reddit" aria-hidden=true></i>
+</a>
+</li>
+<li>
+<a class=icon href="http://www.tumblr.com/share/link?url=https%3a%2f%2fchagu.org%2fposts%2falexctf-2017-02-05_cr3%2f&name=AlexCTF%20CR3%3a%20What%20is%20this%20encryption%3f%20150p&description=Fady%20assumed%20this%20time%20that%20you%20will%20be%20so%20n00b%20to%20tell%20what%20encryption%20he%20is%20using%20he%20send%20the%20following%20note%20to%20his%20friend%20in%20plain%20sight%3a%0ap%3d0xa6055ec186de51800ddd6fcbf0192384ff42d707a55f57af4fcfb0d1dc7bd97055e8275cd4b78ec63c5d592f567c66393a061324aa2e6a8d8fc2a910cbee1ed9%20q%3d0xfa0f9463ea0a93b929c099320d31c277e0b0dbc65b189ed76124f5a1218f5d91fd0102a4c8de11f28be5e4d0ae91ab319f4537e97ed74bc663e972a4a9119307%20e%3d0x6d1fdab4ce3217b3fc32c9ed480a31d067fd57d93a9ab52b472dc393ab7852fbcb11abbebfd6aaae8032db1316dc22d3f7c3d631e24df13ef23d3b381a1c3e04abcc745d402ee3a031ac2718fae63b240837b4f657f29ca4702da9af22a3a019d68904a969ddb01bcf941df70af042f4fae5cbeb9c2151b324f387e525094c41%20c%3d0x7fe1a4f743675d1987d25d38111fae0f78bbea6852cba5beda47db76d119a3efe24cb04b9449f53becd43b0b46e269826a983f832abb53b7a7e24a43ad15378344ed5c20f51e268186d24c76050c1e73647523bd5f91d9b6ad3e86bbf9126588b1dee21e6997372e36c3e74284734748891829665086e0dc523ed23c386bb520%20He%20is%20underestimating%20our%20crypto%20skills%21%0aRecover%20d%20This%20challenge%20requires%20some%20knowledge%20about%20basic%20crypto%20algorithms.%20Based%20on%20the%20variables%20that%20Fady%20sent%20we%20assumed%20this%20was%20RSA.%20A%20formal%20definition%20of%20the%20RSA%20algorithm%20can%20be%20expressed%20as%20the%20following%3a" aria-label=Tumblr>
+<i class="fab fa-tumblr" aria-hidden=true></i>
+</a>
+</li>
+<li>
+<a class=icon href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2fchagu.org%2fposts%2falexctf-2017-02-05_cr3%2f&t=AlexCTF%20CR3%3a%20What%20is%20this%20encryption%3f%20150p" aria-label="Hacker News">
+<i class="fab fa-hacker-news" aria-hidden=true></i>
+</a>
+</li>
+</ul>
+</div>
+<div id=toc>
+<nav id=TableOfContents>
+<ul>
+<li><a href=#recover-d>Recover d</a></li>
+</ul>
+</nav>
+</div>
+</span>
+</div>
+<article class=post itemscope itemtype=http://schema.org/BlogPosting>
+<header>
+<h1 class=posttitle itemprop="name headline">
+AlexCTF CR3: What is this encryption? 150p
+</h1>
+<div class=meta>
+<div class=postdate>
+<time datetime="2017-02-05 11:22:32 +0200 +0200" itemprop=datePublished>2017-02-05</time>
+</div>
+<div class=article-read-time>
+<i class="far fa-clock"></i>
+1 minute read
+</div>
+<div class=article-tag>
+<i class="fas fa-tag"></i>
+<a class=tag-link href=/tags/rsa rel=tag>RSA</a>
+</div>
+</div>
+</header>
+<div class=content itemprop=articleBody>
+<p>Fady assumed this time that you will be so n00b to tell what encryption he is using
+he send the following note to his friend in plain sight:</p>
+<pre tabindex=0><code>p=0xa6055ec186de51800ddd6fcbf0192384ff42d707a55f57af4fcfb0d1dc7bd97055e8275cd4b78ec63c5d592f567c66393a061324aa2e6a8d8fc2a910cbee1ed9
+
+q=0xfa0f9463ea0a93b929c099320d31c277e0b0dbc65b189ed76124f5a1218f5d91fd0102a4c8de11f28be5e4d0ae91ab319f4537e97ed74bc663e972a4a9119307
+
+e=0x6d1fdab4ce3217b3fc32c9ed480a31d067fd57d93a9ab52b472dc393ab7852fbcb11abbebfd6aaae8032db1316dc22d3f7c3d631e24df13ef23d3b381a1c3e04abcc745d402ee3a031ac2718fae63b240837b4f657f29ca4702da9af22a3a019d68904a969ddb01bcf941df70af042f4fae5cbeb9c2151b324f387e525094c41
+
+c=0x7fe1a4f743675d1987d25d38111fae0f78bbea6852cba5beda47db76d119a3efe24cb04b9449f53becd43b0b46e269826a983f832abb53b7a7e24a43ad15378344ed5c20f51e268186d24c76050c1e73647523bd5f91d9b6ad3e86bbf9126588b1dee21e6997372e36c3e74284734748891829665086e0dc523ed23c386bb520
+</code></pre><p>He is underestimating our crypto skills!</p>
+<h2 id=recover-d>Recover d</h2>
+<p>This challenge requires some knowledge about basic crypto algorithms. Based on the variables that Fady sent we assumed this was RSA. A formal definition of the RSA algorithm can be expressed as the following:</p>
+<p><img src=images/rsa.png alt=rsa></p>
+<p>Since we know <code>p, q, e, c</code> we can easily calculate the private key <code>d</code>, luckily for us we have <a href=https://github.com/ius/rsatool>https://github.com/ius/rsatool</a> that can do it for us.</p>
+<pre tabindex=0><code class=language-console data-lang=console>λ ~/Downloads/crypto03/ ./rsatool/rsatool.py -p 0xa6055ec186de51800ddd6fcbf0192384ff42d707a55f57af4fcfb0d1dc7bd97055e8275cd4b78ec63c5d592f567c66393a061324aa2e6a8d8fc2a910cbee1ed9 -q 0xfa0f9463ea0a93b929c099320d31c277e0b0dbc65b189ed76124f5a1218f5d91fd0102a4c8de11f28be5e4d0ae91ab319f4537e97ed74bc663e972a4a9119307 -e 0x6d1fdab4ce3217b3fc32c9ed480a31d067fd57d93a9ab52b472dc393ab7852fbcb11abbebfd6aaae8032db1316dc22d3f7c3d631e24df13ef23d3b381a1c3e04abcc745d402ee3a031ac2718fae63b240837b4f657f29ca4702da9af22a3a019d68904a969ddb01bcf941df70af042f4fae5cbeb9c2151b324f387e525094c41
+Using (p, q) to initialise RSA instance
+
+n =
+a22b591571af4e0d465774b82ccd9952eb479fdfdd551800c2940b1c114e25414fc62c60086563df
+6cba2fc164cafd0db253299dddfa57d8c4e87af9f271ef9e0cb10ab85139e5cf52ae39ff7f833380
+fbf3439e374c31ea26b2224b2d18cb194e3b3bb13cd6409c978e3e8ff35794ed4cf8cad0305b2b05
+b2ee66c09ca272ef
+
+e =
+6d1fdab4ce3217b3fc32c9ed480a31d067fd57d93a9ab52b472dc393ab7852fbcb11abbebfd6aaae
+8032db1316dc22d3f7c3d631e24df13ef23d3b381a1c3e04abcc745d402ee3a031ac2718fae63b24
+0837b4f657f29ca4702da9af22a3a019d68904a969ddb01bcf941df70af042f4fae5cbeb9c2151b3
+24f387e525094c41
+
+d =
+1af78e760bba4f7b55ffffd7b9f22090a00f9ac629697fd7a971b64f81d6a3bbf6c552c3c29abe5a
+ea07257e6fcfd2f63186da31252bbe03278732f8a4d8f7f35f8cbed38ac95f5be92aedbf09341475
+0d11acb8a00afc9abf4d3b496d849436ef1826c27a03e362ed62f74ccc421f8c3e62d6b596757822
+0808b3f62b2f6c71
+
+p =
+a6055ec186de51800ddd6fcbf0192384ff42d707a55f57af4fcfb0d1dc7bd97055e8275cd4b78ec6
+3c5d592f567c66393a061324aa2e6a8d8fc2a910cbee1ed9
+
+q =
+fa0f9463ea0a93b929c099320d31c277e0b0dbc65b189ed76124f5a1218f5d91fd0102a4c8de11f2
+8be5e4d0ae91ab319f4537e97ed74bc663e972a4a9119307
+</code></pre><p>Now we know <code>n</code> and <code>d</code>, we begin to decrypt the ciphertext <code>c</code> by creating a simple python script:</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#75715e>#!/usr/bin/env python</span>
+<span style=color:#f92672>import</span> binascii
+
+p <span style=color:#f92672>=</span> int(<span style=color:#e6db74>&#39;0xa6055ec186de51800ddd6fcbf0192384ff42d707a55f57af4fcfb0d1dc7bd97055e8275cd4b78ec63c5d592f567c66393a061324aa2e6a8d8fc2a910cbee1ed9&#39;</span>, <span style=color:#ae81ff>16</span>)
+q <span style=color:#f92672>=</span> int(<span style=color:#e6db74>&#39;0xfa0f9463ea0a93b929c099320d31c277e0b0dbc65b189ed76124f5a1218f5d91fd0102a4c8de11f28be5e4d0ae91ab319f4537e97ed74bc663e972a4a9119307&#39;</span>, <span style=color:#ae81ff>16</span>)
+e <span style=color:#f92672>=</span> int(<span style=color:#e6db74>&#39;0x6d1fdab4ce3217b3fc32c9ed480a31d067fd57d93a9ab52b472dc393ab7852fbcb11abbebfd6aaae8032db1316dc22d3f7c3d631e24df13ef23d3b381a1c3e04abcc745d402ee3a031ac2718fae63b240837b4f657f29ca4702da9af22a3a019d68904a969ddb01bcf941df70af042f4fae5cbeb9c2151b324f387e525094c41&#39;</span>, <span style=color:#ae81ff>16</span>)
+c <span style=color:#f92672>=</span> int(<span style=color:#e6db74>&#39;0x7fe1a4f743675d1987d25d38111fae0f78bbea6852cba5beda47db76d119a3efe24cb04b9449f53becd43b0b46e269826a983f832abb53b7a7e24a43ad15378344ed5c20f51e268186d24c76050c1e73647523bd5f91d9b6ad3e86bbf9126588b1dee21e6997372e36c3e74284734748891829665086e0dc523ed23c386bb520&#39;</span>, <span style=color:#ae81ff>16</span>)
+N <span style=color:#f92672>=</span> int(<span style=color:#e6db74>&#39;0xa22b591571af4e0d465774b82ccd9952eb479fdfdd551800c2940b1c114e25414fc62c60086563df6cba2fc164cafd0db253299dddfa57d8c4e87af9f271ef9e0cb10ab85139e5cf52ae39ff7f833380fbf3439e374c31ea26b2224b2d18cb194e3b3bb13cd6409c978e3e8ff35794ed4cf8cad0305b2b05b2ee66c09ca272ef&#39;</span>, <span style=color:#ae81ff>16</span>)
+
+d <span style=color:#f92672>=</span> int(<span style=color:#e6db74>&#39;0x1af78e760bba4f7b55ffffd7b9f22090a00f9ac629697fd7a971b64f81d6a3bbf6c552c3c29abe5aea07257e6fcfd2f63186da31252bbe03278732f8a4d8f7f35f8cbed38ac95f5be92aedbf093414750d11acb8a00afc9abf4d3b496d849436ef1826c27a03e362ed62f74ccc421f8c3e62d6b5967578220808b3f62b2f6c71&#39;</span>, <span style=color:#ae81ff>16</span>)
+
+m <span style=color:#f92672>=</span> hex(pow(c, d, N))<span style=color:#f92672>.</span>rstrip(<span style=color:#e6db74>&#34;L&#34;</span>)<span style=color:#f92672>.</span>replace(<span style=color:#e6db74>&#34;0x&#34;</span>,<span style=color:#e6db74>&#34;&#34;</span>)
+
+print(binascii<span style=color:#f92672>.</span>unhexlify(m))
+</code></pre></div><p>Let&rsquo;s run the code:</p>
+<pre tabindex=0><code class=language-console data-lang=console>λ ~/Downloads/crypto03/ python solve.py
+ALEXCTF{RS4_I5_E55ENT1AL_T0_D0_BY_H4ND}
+</code></pre>
+</div>
+</article>
+<div id=footer-post-container>
+<div id=footer-post>
+<div id=nav-footer style=display:none>
+<ul>
+<li><a href=/>Home</a></li>
+<li><a href=/posts>Writeups</a></li>
+<li><a href=/tags>Tags</a></li>
+<li><a href=/about>About</a></li>
+</ul>
+</div>
+<div id=toc-footer style=display:none>
+<nav id=TableOfContents>
+<ul>
+<li><a href=#recover-d>Recover d</a></li>
+</ul>
+</nav>
+</div>
+<div id=share-footer style=display:none>
+<ul>
+<li>
+<a class=icon href="http://www.facebook.com/sharer.php?u=https%3a%2f%2fchagu.org%2fposts%2falexctf-2017-02-05_cr3%2f" aria-label=Facebook>
+<i class="fab fa-facebook fa-lg" aria-hidden=true></i>
+</a>
+</li>
+<li>
+<a class=icon href="https://twitter.com/share?url=https%3a%2f%2fchagu.org%2fposts%2falexctf-2017-02-05_cr3%2f&text=AlexCTF%20CR3%3a%20What%20is%20this%20encryption%3f%20150p" aria-label=Twitter>
+<i class="fab fa-twitter fa-lg" aria-hidden=true></i>
+</a>
+</li>
+<li>
+<a class=icon href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2fchagu.org%2fposts%2falexctf-2017-02-05_cr3%2f&title=AlexCTF%20CR3%3a%20What%20is%20this%20encryption%3f%20150p" aria-label=Linkedin>
+<i class="fab fa-linkedin fa-lg" aria-hidden=true></i>
+</a>
+</li>
+<li>
+<a class=icon href="https://pinterest.com/pin/create/bookmarklet/?url=https%3a%2f%2fchagu.org%2fposts%2falexctf-2017-02-05_cr3%2f&is_video=false&description=AlexCTF%20CR3%3a%20What%20is%20this%20encryption%3f%20150p" aria-label=Pinterest>
+<i class="fab fa-pinterest fa-lg" aria-hidden=true></i>
+</a>
+</li>
+<li>
+<a class=icon href="mailto:?subject=AlexCTF%20CR3%3a%20What%20is%20this%20encryption%3f%20150p&body=Check out this article: https%3a%2f%2fchagu.org%2fposts%2falexctf-2017-02-05_cr3%2f" aria-label=Email>
+<i class="fas fa-envelope fa-lg" aria-hidden=true></i>
+</a>
+</li>
+<li>
+<a class=icon href="https://getpocket.com/save?url=https%3a%2f%2fchagu.org%2fposts%2falexctf-2017-02-05_cr3%2f&title=AlexCTF%20CR3%3a%20What%20is%20this%20encryption%3f%20150p" aria-label=Pocket>
+<i class="fab fa-get-pocket fa-lg" aria-hidden=true></i>
+</a>
+</li>
+<li>
+<a class=icon href="http://reddit.com/submit?url=https%3a%2f%2fchagu.org%2fposts%2falexctf-2017-02-05_cr3%2f&title=AlexCTF%20CR3%3a%20What%20is%20this%20encryption%3f%20150p" aria-label=reddit>
+<i class="fab fa-reddit fa-lg" aria-hidden=true></i>
+</a>
+</li>
+<li>
+<a class=icon href="http://www.tumblr.com/share/link?url=https%3a%2f%2fchagu.org%2fposts%2falexctf-2017-02-05_cr3%2f&name=AlexCTF%20CR3%3a%20What%20is%20this%20encryption%3f%20150p&description=Fady%20assumed%20this%20time%20that%20you%20will%20be%20so%20n00b%20to%20tell%20what%20encryption%20he%20is%20using%20he%20send%20the%20following%20note%20to%20his%20friend%20in%20plain%20sight%3a%0ap%3d0xa6055ec186de51800ddd6fcbf0192384ff42d707a55f57af4fcfb0d1dc7bd97055e8275cd4b78ec63c5d592f567c66393a061324aa2e6a8d8fc2a910cbee1ed9%20q%3d0xfa0f9463ea0a93b929c099320d31c277e0b0dbc65b189ed76124f5a1218f5d91fd0102a4c8de11f28be5e4d0ae91ab319f4537e97ed74bc663e972a4a9119307%20e%3d0x6d1fdab4ce3217b3fc32c9ed480a31d067fd57d93a9ab52b472dc393ab7852fbcb11abbebfd6aaae8032db1316dc22d3f7c3d631e24df13ef23d3b381a1c3e04abcc745d402ee3a031ac2718fae63b240837b4f657f29ca4702da9af22a3a019d68904a969ddb01bcf941df70af042f4fae5cbeb9c2151b324f387e525094c41%20c%3d0x7fe1a4f743675d1987d25d38111fae0f78bbea6852cba5beda47db76d119a3efe24cb04b9449f53becd43b0b46e269826a983f832abb53b7a7e24a43ad15378344ed5c20f51e268186d24c76050c1e73647523bd5f91d9b6ad3e86bbf9126588b1dee21e6997372e36c3e74284734748891829665086e0dc523ed23c386bb520%20He%20is%20underestimating%20our%20crypto%20skills%21%0aRecover%20d%20This%20challenge%20requires%20some%20knowledge%20about%20basic%20crypto%20algorithms.%20Based%20on%20the%20variables%20that%20Fady%20sent%20we%20assumed%20this%20was%20RSA.%20A%20formal%20definition%20of%20the%20RSA%20algorithm%20can%20be%20expressed%20as%20the%20following%3a" aria-label=Tumblr>
+<i class="fab fa-tumblr fa-lg" aria-hidden=true></i>
+</a>
+</li>
+<li>
+<a class=icon href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2fchagu.org%2fposts%2falexctf-2017-02-05_cr3%2f&t=AlexCTF%20CR3%3a%20What%20is%20this%20encryption%3f%20150p" aria-label="Hacker News">
+<i class="fab fa-hacker-news fa-lg" aria-hidden=true></i>
+</a>
+</li>
+</ul>
+</div>
+<div id=actions-footer>
+<a id=menu-toggle class=icon href=# onclick="return $('#nav-footer').toggle(),!1" aria-label=Menu>
+<i class="fas fa-bars fa-lg" aria-hidden=true></i> Menu</a>
+<a id=toc-toggle class=icon href=# onclick="return $('#toc-footer').toggle(),!1" aria-label=TOC>
+<i class="fas fa-list fa-lg" aria-hidden=true></i> TOC</a>
+<a id=share-toggle class=icon href=# onclick="return $('#share-footer').toggle(),!1" aria-label=Share>
+<i class="fas fa-share-alt fa-lg" aria-hidden=true></i> share</a>
+<a id=top style=display:none class=icon href=# onclick="$('html, body').animate({scrollTop:0},'fast')" aria-label="Top of Page">
+<i class="fas fa-chevron-up fa-lg" aria-hidden=true></i> Top</a>
+</div>
+</div>
+</div>
+<footer id=footer>
+<div class=footer-left>
+Copyright &copy; 2021 ChaGu CTF
+</div>
+<div class=footer-right>
+<nav>
+<ul>
+<li><a href=/>Home</a></li>
+<li><a href=/posts>Writeups</a></li>
+<li><a href=/tags>Tags</a></li>
+<li><a href=/about>About</a></li>
+</ul>
+</nav>
+</div>
+</footer>
+</div>
+</body>
+<link rel=stylesheet href=/lib/font-awesome/css/all.min.css>
+<script src=/lib/jquery/jquery.min.js></script>
+<script src=/js/main.js></script>
+<script src=/js/code-copy.js></script>
+</html>
