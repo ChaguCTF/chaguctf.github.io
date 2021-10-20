@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>SQL Injection on ChaGu CTF</title>
+    <link>http://example.org/tags/sql-injection/</link>
+    <description>Recent content in SQL Injection on ChaGu CTF</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 22 Jan 2017 11:22:32 +0200</lastBuildDate><atom:link href="http://example.org/tags/sql-injection/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Insomni&#39;hack teaser - Shobot (web 200)</title>
+      <link>http://example.org/posts/insomnihack_teaser_2017_shobot/</link>
+      <pubDate>Sun, 22 Jan 2017 11:22:32 +0200</pubDate>
+      
+      <guid>http://example.org/posts/insomnihack_teaser_2017_shobot/</guid>
+      <description>You were presented with an online store that sold robots. We didn&amp;rsquo;t manage to solve this challenge in time.
+What we did correct The website had a function running that calculates a user&amp;rsquo;s trust level based on how many products he/she buys. If you tried any SQL injection in the URL parameters with low trust level, the server would detect it and lower your trust level. Once you reached the maximum trust level, you could successfully execute SQL injections.</description>
+    </item>
+    
+  </channel>
+</rss>

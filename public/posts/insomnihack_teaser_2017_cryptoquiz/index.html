@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <link rel="preload" href="/lib/font-awesome/webfonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="/lib/font-awesome/webfonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="/lib/font-awesome/webfonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="/lib/JetBrainsMono/web/woff2/JetBrainsMono-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <script type="text/javascript" src="https://latest.cactus.chat/cactus.js"></script>
+  <link rel="stylesheet" href="https://latest.cactus.chat/style.css" type="text/css">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title> Insomni&#39;hack teaser - Cryptoquizz (crypto/misc 50) | ChaGu CTF</title>
+  <link rel = 'canonical' href = 'http://example.org/posts/insomnihack_teaser_2017_cryptoquiz/'>
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta property="og:title" content="Insomni&#39;hack teaser - Cryptoquizz (crypto/misc 50)" />
+<meta property="og:description" content="This was an interesting challange. You started by connecting with telnet to the server specified in the challenge description. Once connected, a question was asked: What is the birth year of [known cryptographer]? You had 2 seconds to react before the server disconnected you. Once you connected again, the server asked the same question but for a different person. I begun connecting over and over again to see if there was a pattern or if the selection of people was small." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/insomnihack_teaser_2017_cryptoquiz/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2017-01-22T11:22:32+02:00" />
+<meta property="article:modified_time" content="2017-01-22T11:22:32+02:00" />
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Insomni&#39;hack teaser - Cryptoquizz (crypto/misc 50)"/>
+<meta name="twitter:description" content="This was an interesting challange. You started by connecting with telnet to the server specified in the challenge description. Once connected, a question was asked: What is the birth year of [known cryptographer]? You had 2 seconds to react before the server disconnected you. Once you connected again, the server asked the same question but for a different person. I begun connecting over and over again to see if there was a pattern or if the selection of people was small."/>
+
+  
+  
+  
+  <link rel="stylesheet" href="http://example.org/css/styles.94f653e9e151e28067a7c5dbbc4600cbd5a3c721e79faaf971e523c40f3b249b8e4f20bb57810dfffa8d559ca5c140fd56eb4cd9c0853113ad08e66afdb08bdd.css" integrity="sha512-lPZT6eFR4oBnp8XbvEYAy9WjxyHnn6r5ceUjxA87JJuOTyC7V4EN//qNVZylwUD9VutM2cCFMROtCOZq/bCL3Q=="> 
+
+  
+  
+  
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+  
+<link rel="icon" type="image/png" href="http://example.org/images/favicon.ico" />
+
+  
+  
+  
+  
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+  <div class="content index py4">
+
+  <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;" aria-label="Top of Page"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+        <li><a href="/">Home</a></li>
+         
+        <li><a href="/posts">Writeups</a></li>
+         
+        <li><a href="/news">News</a></li>
+         
+        <li><a href="/tags">Tags</a></li>
+         
+        <li><a href="/about">About</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li>
+          <a class="icon" href=" http://example.org/posts/insomnihack_teaser_2017_shobot/" aria-label="Previous">
+            <i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i>
+          </a>
+        </li>
+        
+        
+        <li>
+          <a class="icon" href="http://example.org/posts/alexctf-2017-02-05_tr4/" aria-label="Next">
+            <i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i>
+          </a>
+        </li>
+        
+        <li>
+          <a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" aria-label="Top of Page">
+            <i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i>
+          </a>
+        </li>
+        <li>
+          <a class="icon" href="#" aria-label="Share">
+            <i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i>
+          </a>
+        </li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      
+      <ul>
+  
+  
+    
+  
+  
+  <li>
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=http%3a%2f%2fexample.org%2fposts%2finsomnihack_teaser_2017_cryptoquiz%2f" aria-label="Facebook">
+      <i class="fab fa-facebook " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://twitter.com/share?url=http%3a%2f%2fexample.org%2fposts%2finsomnihack_teaser_2017_cryptoquiz%2f&text=Insomni%27hack%20teaser%20-%20Cryptoquizz%20%28crypto%2fmisc%2050%29" aria-label="Twitter">
+      <i class="fab fa-twitter " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=http%3a%2f%2fexample.org%2fposts%2finsomnihack_teaser_2017_cryptoquiz%2f&title=Insomni%27hack%20teaser%20-%20Cryptoquizz%20%28crypto%2fmisc%2050%29" aria-label="Linkedin">
+      <i class="fab fa-linkedin " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http%3a%2f%2fexample.org%2fposts%2finsomnihack_teaser_2017_cryptoquiz%2f&is_video=false&description=Insomni%27hack%20teaser%20-%20Cryptoquizz%20%28crypto%2fmisc%2050%29" aria-label="Pinterest">
+      <i class="fab fa-pinterest " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="mailto:?subject=Insomni%27hack%20teaser%20-%20Cryptoquizz%20%28crypto%2fmisc%2050%29&body=Check out this article: http%3a%2f%2fexample.org%2fposts%2finsomnihack_teaser_2017_cryptoquiz%2f" aria-label="Email">
+      <i class="fas fa-envelope " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://getpocket.com/save?url=http%3a%2f%2fexample.org%2fposts%2finsomnihack_teaser_2017_cryptoquiz%2f&title=Insomni%27hack%20teaser%20-%20Cryptoquizz%20%28crypto%2fmisc%2050%29" aria-label="Pocket">
+      <i class="fab fa-get-pocket " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://reddit.com/submit?url=http%3a%2f%2fexample.org%2fposts%2finsomnihack_teaser_2017_cryptoquiz%2f&title=Insomni%27hack%20teaser%20-%20Cryptoquizz%20%28crypto%2fmisc%2050%29" aria-label="reddit">
+      <i class="fab fa-reddit " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.tumblr.com/share/link?url=http%3a%2f%2fexample.org%2fposts%2finsomnihack_teaser_2017_cryptoquiz%2f&name=Insomni%27hack%20teaser%20-%20Cryptoquizz%20%28crypto%2fmisc%2050%29&description=This%20was%20an%20interesting%20challange.%20You%20started%20by%20connecting%20with%20telnet%20to%20the%20server%20specified%20in%20the%20challenge%20description.%20Once%20connected%2c%20a%20question%20was%20asked%3a%20What%20is%20the%20birth%20year%20of%20%5bknown%20cryptographer%5d%3f%20You%20had%202%20seconds%20to%20react%20before%20the%20server%20disconnected%20you.%20Once%20you%20connected%20again%2c%20the%20server%20asked%20the%20same%20question%20but%20for%20a%20different%20person.%20I%20begun%20connecting%20over%20and%20over%20again%20to%20see%20if%20there%20was%20a%20pattern%20or%20if%20the%20selection%20of%20people%20was%20small." aria-label="Tumblr">
+      <i class="fab fa-tumblr " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=http%3a%2f%2fexample.org%2fposts%2finsomnihack_teaser_2017_cryptoquiz%2f&t=Insomni%27hack%20teaser%20-%20Cryptoquizz%20%28crypto%2fmisc%2050%29" aria-label="Hacker News">
+      <i class="fab fa-hacker-news " aria-hidden="true"></i>
+    </a>
+  </li>
+</ul>
+
+    </div>
+    
+    <div id="toc">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#search-all-the-things">Search all the things!</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+    <li><a href="#the-script">The script</a>
+      <ul>
+        <li><a href="#output">Output</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+    
+  </span>
+</div>
+
+
+  <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+    <header>
+      <h1 class="posttitle" itemprop="name headline">
+        Insomni&#39;hack teaser - Cryptoquizz (crypto/misc 50)
+      </h1>
+      <div class="meta">
+        
+        <div class="postdate">
+          
+          <time datetime="2017-01-22 11:22:32 &#43;0200 &#43;0200" itemprop="datePublished">2017-01-22</time>
+          
+        </div>
+        
+        
+        
+        
+        <div class="article-tag">
+            <i class="fas fa-tag"></i>
+            
+            
+            <a class="tag-link" href="/tags/misc" rel="tag">Misc</a>
+            
+        </div>
+        
+      </div>
+    </header>
+
+
+    
+    <div class="content" itemprop="articleBody">
+      <p>This was an interesting challange. You started by connecting with telnet to the server specified in the challenge description. Once connected, a question was asked: What is the birth year of [known cryptographer]? You had 2 seconds to react before the server disconnected you. Once you connected again, the server asked the same question but for a different person. I begun connecting over and over again to see if there was a pattern or if the selection of people was small. I came to the conclusion that the server was selecting randomly from a list consiting of 20+ names.</p>
+<p>I looked up some of the names to see which year they were born, then I began connecting again hoping that the name I looked up would show. To my suprise the name came up pretty fast, so I entered the birth year but I was given no flag. Instead, a new name was asked.</p>
+<p>I concluded the following:</p>
+<ul>
+<li>The server is selecting known cryptographers from a list consisting of 20+ names.</li>
+<li>If you enter the wrong birth year, the server will disconnect you.</li>
+<li>If you enter the correct birth year, the server will ask the same question but for a different person.</li>
+<li>The server will most likely ask you a specific number of times before you are given a flag.</li>
+</ul>
+<h2 id="search-all-the-things">Search all the things!</h2>
+<p>I thought that there are two ways to solve this challenge.</p>
+<h4 id="a-manually">a) Manually</h4>
+<p>Connect to the server as much as I need until I have written down the names, then manually search for their birth years. Create a script and hardcode the names and their birth years and simply return the correct birth year for the person in the question.</p>
+<p>I didn&rsquo;t like this approach, it was tedious and didn&rsquo;t really require any significant effort.</p>
+<h4 id="b-automatic">b) Automatic</h4>
+<p>Instead I choose the automatic approach. I created a script that connected to the server, parsed out the name from the question asked by the server. The script makes one query to google to see if google returns a profile with the birth year. If not, the script falls back to wikipedia.</p>
+<p>The problem with this approach is that not all entries on google and wikipedia have the same format when showing when someone was born. Therefore it required a lot of regular expressions. It was very much trial and error building this script but it got me the flag and it was fun as well.</p>
+<h2 id="the-script">The script</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">#!../venv/bin/python</span>
+<span style="color:#75715e"># -*- coding: utf-8 -*-</span>
+<span style="color:#f92672">from</span> pwn <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+<span style="color:#f92672">import</span> requests
+<span style="color:#f92672">import</span> re
+<span style="color:#f92672">from</span> bs4 <span style="color:#f92672">import</span> BeautifulSoup
+
+url <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;https://en.wikipedia.org/wiki/&#39;</span>
+url2 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;https://www.google.se/search?q=&#39;</span>
+
+new_data <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;</span>
+conn <span style="color:#f92672">=</span> remote(<span style="color:#e6db74">&#39;quizz.teaser.insomnihack.ch&#39;</span>,<span style="color:#ae81ff">1031</span>)
+print conn<span style="color:#f92672">.</span>recv()
+data <span style="color:#f92672">=</span> conn<span style="color:#f92672">.</span>recv()
+
+<span style="color:#66d9ef">while</span> <span style="color:#66d9ef">True</span>:
+    <span style="color:#66d9ef">if</span> new_data:
+        findName <span style="color:#f92672">=</span> re<span style="color:#f92672">.</span>search(<span style="color:#e6db74">&#34;~~ What is the birth year of(\s[\w\-\.\s]+)\?&#34;</span>, new_data)
+        print(new_data)
+    <span style="color:#66d9ef">else</span>:
+        findName <span style="color:#f92672">=</span> re<span style="color:#f92672">.</span>search(<span style="color:#e6db74">&#34;~~ What is the birth year of(\s[\w\-\.\s]+)\?&#34;</span>, data)
+        print(data)
+
+    <span style="color:#66d9ef">try</span>:
+        print(<span style="color:#e6db74">&#34;Name: &#34;</span><span style="color:#f92672">+</span>findName<span style="color:#f92672">.</span>group(<span style="color:#ae81ff">1</span>))
+        name <span style="color:#f92672">=</span> findName<span style="color:#f92672">.</span>group(<span style="color:#ae81ff">1</span>)
+    <span style="color:#66d9ef">except</span> <span style="color:#a6e22e">Exception</span> <span style="color:#66d9ef">as</span> e:
+        <span style="color:#66d9ef">if</span> new_data:
+            print(new_data)
+        <span style="color:#66d9ef">else</span>:
+            print(data)
+        print(<span style="color:#e6db74">&#34;[-] Could not find name&#34;</span>)
+        quit()
+
+    wikipediaurl <span style="color:#f92672">=</span> url<span style="color:#f92672">+</span>name<span style="color:#f92672">.</span>strip()<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#39; &#39;</span>,<span style="color:#e6db74">&#39;_&#39;</span>)
+    googleurl <span style="color:#f92672">=</span> url2<span style="color:#f92672">+</span>name<span style="color:#f92672">.</span>strip()
+
+    print(<span style="color:#e6db74">&#34;Wikipedia URL: &#34;</span> <span style="color:#f92672">+</span> wikipediaurl)
+    print(<span style="color:#e6db74">&#34;Google URL: &#34;</span> <span style="color:#f92672">+</span> googleurl)
+
+    request <span style="color:#f92672">=</span> requests<span style="color:#f92672">.</span>get(googleurl)
+    soup <span style="color:#f92672">=</span> BeautifulSoup(request<span style="color:#f92672">.</span>text, <span style="color:#e6db74">&#39;html.parser&#39;</span>)
+    born <span style="color:#f92672">=</span> soup<span style="color:#f92672">.</span>body<span style="color:#f92672">.</span>find(<span style="color:#e6db74">&#39;span&#39;</span>, attrs<span style="color:#f92672">=</span>{<span style="color:#e6db74">&#39;class&#39;</span>: <span style="color:#e6db74">&#39;_tA&#39;</span>})
+
+    wikipedia_search <span style="color:#f92672">=</span> [
+            <span style="color:#e6db74">&#39;&lt;span class=&#34;bday&#34;&gt;(\d</span><span style="color:#e6db74">{4}</span><span style="color:#e6db74">).+&lt;\/span&gt;&#39;</span>,
+            <span style="color:#e6db74">&#39;.+born \w+ \d</span><span style="color:#e6db74">{2}</span><span style="color:#e6db74">\, (\d</span><span style="color:#e6db74">{4}</span><span style="color:#e6db74">).+&#39;</span>,
+            <span style="color:#e6db74">&#39;.+born (\d</span><span style="color:#e6db74">{4}</span><span style="color:#e6db74">).+&#39;</span>,
+            <span style="color:#e6db74">&#39;.+born \d{1,2} \w+ (\d</span><span style="color:#e6db74">{4}</span><span style="color:#e6db74">).+&#39;</span>,
+            <span style="color:#e6db74">&#39;.+born \&lt;abbr.+ (\d</span><span style="color:#e6db74">{4}</span><span style="color:#e6db74">).+&#39;</span>,
+            <span style="color:#e6db74">&#39;&lt;th scope=&#34;row&#34;&gt;Born&lt;\/th&gt;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&lt;td&gt;(\d</span><span style="color:#e6db74">{4}</span><span style="color:#e6db74">)&lt;\/td&gt;&#39;</span>,
+            <span style="color:#e6db74">&#39;.+\(\w+ \d{1,2}\,\s(\d</span><span style="color:#e6db74">{4}</span><span style="color:#e6db74">) \- \w+ \d{1,2}\, \d</span><span style="color:#e6db74">{4}</span><span style="color:#e6db74">.+&#39;</span>,
+    ]
+
+    googlesearch <span style="color:#f92672">=</span> [
+        <span style="color:#e6db74">&#39;&lt;span class=&#34;_tA&#34;&gt;\d{1,2} \w+ (\d</span><span style="color:#e6db74">{4}</span><span style="color:#e6db74">).+&#39;</span>,
+        <span style="color:#e6db74">&#39;&lt;span class=&#34;_tA&#34;&gt;(\d</span><span style="color:#e6db74">{4}</span><span style="color:#e6db74">).+&#39;</span>,
+        <span style="color:#e6db74">&#39;.Född\&lt;\/a\&gt;\: \&lt;\/span\&gt;\&lt;span class=&#34;_Xbe kno-fv&#34;&gt;\d{1,2} \w+ (\d</span><span style="color:#e6db74">{4}</span><span style="color:#e6db74">) \(ålder \d{1,2}\)&#39;</span>,
+        <span style="color:#e6db74">&#39;.Född&lt;\/a&gt;: &lt;\/span&gt;\&lt;span class=&#34;_Xbe kno-fv&#34;&gt;(\d</span><span style="color:#e6db74">{4}</span><span style="color:#e6db74">).+&#39;</span>,
+    ]
+
+    <span style="color:#66d9ef">for</span> index <span style="color:#f92672">in</span> xrange(len(googlesearch)):
+
+        getBirth <span style="color:#f92672">=</span> re<span style="color:#f92672">.</span>search(str(googlesearch[index]), str(born))
+
+        <span style="color:#66d9ef">try</span>:
+            print(<span style="color:#e6db74">&#34;[google] Found Birth year: &#34;</span><span style="color:#f92672">+</span>getBirth<span style="color:#f92672">.</span>group(<span style="color:#ae81ff">1</span>))
+            birthYear <span style="color:#f92672">=</span> getBirth<span style="color:#f92672">.</span>group(<span style="color:#ae81ff">1</span>)
+            <span style="color:#66d9ef">break</span>
+        <span style="color:#66d9ef">except</span> <span style="color:#a6e22e">Exception</span> <span style="color:#66d9ef">as</span> e:
+            print(<span style="color:#e6db74">&#34;[-] Could not find birth year for google search </span><span style="color:#e6db74">%d</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">%</span> (index))
+
+        <span style="color:#66d9ef">if</span> index<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span> <span style="color:#f92672">==</span> len(googlesearch):
+            print(<span style="color:#e6db74">&#34;[*] Could not find birth year using google, trying wikipedia</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>)
+            
+            <span style="color:#75715e"># Try wikipedia</span>
+            request <span style="color:#f92672">=</span> requests<span style="color:#f92672">.</span>get(wikipediaurl)
+            <span style="color:#66d9ef">for</span> index <span style="color:#f92672">in</span> xrange(len(wikipedia_search)):
+                getBirth <span style="color:#f92672">=</span> re<span style="color:#f92672">.</span>search(wikipedia_search[index], request<span style="color:#f92672">.</span>content)
+
+                <span style="color:#66d9ef">try</span>:
+                    print(<span style="color:#e6db74">&#34;[wikipedia] Birth year: &#34;</span><span style="color:#f92672">+</span>getBirth<span style="color:#f92672">.</span>group(<span style="color:#ae81ff">1</span>))
+                    birthYear <span style="color:#f92672">=</span> getBirth<span style="color:#f92672">.</span>group(<span style="color:#ae81ff">1</span>)
+                    <span style="color:#66d9ef">break</span>
+                <span style="color:#66d9ef">except</span> <span style="color:#a6e22e">Exception</span> <span style="color:#66d9ef">as</span> e:
+                    print(<span style="color:#e6db74">&#34;[-] Could not find birth year for wikipedia search </span><span style="color:#e6db74">%d</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">%</span> (index))
+
+                    <span style="color:#66d9ef">if</span> index<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span> <span style="color:#f92672">==</span> len(wikipedia_search):
+                        print(<span style="color:#e6db74">&#34;Could not find birth year at all. Quiting...&#34;</span>)
+                        quit()
+
+    conn<span style="color:#f92672">.</span>send(birthYear<span style="color:#f92672">+</span><span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\r\n</span><span style="color:#e6db74">&#34;</span>)
+    data <span style="color:#f92672">=</span> conn<span style="color:#f92672">.</span>recv()
+    new_data <span style="color:#f92672">=</span> data
+    print(conn<span style="color:#f92672">.</span>recv())
+</code></pre></div><h3 id="output">Output</h3>
+<pre tabindex="0"><code>(venv)λ ~/Desktop/insomnia/cryptoquiz/ python hack.py
+[+] Opening connection to quizz.teaser.insomnihack.ch on port 1031: Done
+
+-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~ Hello, young hacker. Are you ready to fight rogue machines ?    ~~
+~~ Now, you'll have to prove us that you are a genuine             ~~
+~~ cryptographer.                                                  ~~
+-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+~~ What is the birth year of Dan Boneh ?
+
+
+Name:  Dan Boneh
+Wikipedia URL: https://en.wikipedia.org/wiki/Dan_Boneh
+Google URL: https://www.google.se/search?q=Dan Boneh
+[-] Could not find birth year for google search 0
+[google] Found Birth year: 1969
+
+
+
+~~ What is the birth year of Nigel P. Smart ?
+
+Name:  Nigel P. Smart
+Wikipedia URL: https://en.wikipedia.org/wiki/Nigel_P._Smart
+Google URL: https://www.google.se/search?q=Nigel P. Smart
+[google] Found Birth year: 1967
+
+
+
+~~ What is the birth year of Yehuda Lindell ?
+
+Name:  Yehuda Lindell
+Wikipedia URL: https://en.wikipedia.org/wiki/Yehuda_Lindell
+Google URL: https://www.google.se/search?q=Yehuda Lindell
+[google] Found Birth year: 1971
+
+
+
+~~ What is the birth year of Moni Naor ?
+
+Name:  Moni Naor
+Wikipedia URL: https://en.wikipedia.org/wiki/Moni_Naor
+Google URL: https://www.google.se/search?q=Moni Naor
+[google] Found Birth year: 1961
+
+
+
+~~ What is the birth year of Ronald Cramer ?
+
+Name:  Ronald Cramer
+Wikipedia URL: https://en.wikipedia.org/wiki/Ronald_Cramer
+Google URL: https://www.google.se/search?q=Ronald Cramer
+[google] Found Birth year: 1968
+
+
+
+~~ What is the birth year of Ross Anderson ?
+
+Name:  Ross Anderson
+Wikipedia URL: https://en.wikipedia.org/wiki/Ross_Anderson
+Google URL: https://www.google.se/search?q=Ross Anderson
+[google] Found Birth year: 1956
+
+
+
+~~ What is the birth year of Michael O. Rabin ?
+
+Name:  Michael O. Rabin
+Wikipedia URL: https://en.wikipedia.org/wiki/Michael_O._Rabin
+Google URL: https://www.google.se/search?q=Michael O. Rabin
+[google] Found Birth year: 1931
+
+
+
+~~ What is the birth year of Jacques Patarin ?
+
+Name:  Jacques Patarin
+Wikipedia URL: https://en.wikipedia.org/wiki/Jacques_Patarin
+Google URL: https://www.google.se/search?q=Jacques Patarin
+[-] Could not find birth year for google search 0
+[-] Could not find birth year for google search 1
+[-] Could not find birth year for google search 2
+[-] Could not find birth year for google search 3
+[*] Could not find birth year using google, trying wikipedia
+
+[-] Could not find birth year for wikipedia search 0
+[-] Could not find birth year for wikipedia search 1
+[-] Could not find birth year for wikipedia search 2
+[-] Could not find birth year for wikipedia search 3
+[-] Could not find birth year for wikipedia search 4
+[-] Could not find birth year for wikipedia search 5
+[-] Could not find birth year for wikipedia search 6
+Could not find birth year at all. Quiting...
+
+
+
+(venv)λ ~/Desktop/insomnia/cryptoquiz/ python hack.py
+[+] Opening connection to quizz.teaser.insomnihack.ch on port 1031: Done
+
+-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~ Hello, young hacker. Are you ready to fight rogue machines ?    ~~
+~~ Now, you'll have to prove us that you are a genuine             ~~
+~~ cryptographer.                                                  ~~
+-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+~~ What is the birth year of Victor S. Miller ?
+
+
+Name:  Victor S. Miller
+Wikipedia URL: https://en.wikipedia.org/wiki/Victor_S._Miller
+Google URL: https://www.google.se/search?q=Victor S. Miller
+[google] Found Birth year: 1947
+
+
+
+~~ What is the birth year of Ronald Cramer ?
+
+Name:  Ronald Cramer
+Wikipedia URL: https://en.wikipedia.org/wiki/Ronald_Cramer
+Google URL: https://www.google.se/search?q=Ronald Cramer
+[google] Found Birth year: 1968
+
+
+
+~~ What is the birth year of Joan Daemen ?
+
+Name:  Joan Daemen
+Wikipedia URL: https://en.wikipedia.org/wiki/Joan_Daemen
+Google URL: https://www.google.se/search?q=Joan Daemen
+[-] Could not find birth year for google search 0
+[google] Found Birth year: 1965
+
+
+
+~~ What is the birth year of Martin Hellman ?
+
+Name:  Martin Hellman
+Wikipedia URL: https://en.wikipedia.org/wiki/Martin_Hellman
+Google URL: https://www.google.se/search?q=Martin Hellman
+[google] Found Birth year: 1945
+
+
+
+~~ What is the birth year of Arjen K. Lenstra ?
+
+Name:  Arjen K. Lenstra
+Wikipedia URL: https://en.wikipedia.org/wiki/Arjen_K._Lenstra
+Google URL: https://www.google.se/search?q=Arjen K. Lenstra
+[google] Found Birth year: 1956
+
+
+
+~~ What is the birth year of Dan Boneh ?
+
+Name:  Dan Boneh
+Wikipedia URL: https://en.wikipedia.org/wiki/Dan_Boneh
+Google URL: https://www.google.se/search?q=Dan Boneh
+[-] Could not find birth year for google search 0
+[google] Found Birth year: 1969
+
+
+
+~~ What is the birth year of Phil Rogaway ?
+
+Name:  Phil Rogaway
+Wikipedia URL: https://en.wikipedia.org/wiki/Phil_Rogaway
+Google URL: https://www.google.se/search?q=Phil Rogaway
+[-] Could not find birth year for google search 0
+[google] Found Birth year: 1962
+
+
+
+~~ What is the birth year of Yehuda Lindell ?
+
+Name:  Yehuda Lindell
+Wikipedia URL: https://en.wikipedia.org/wiki/Yehuda_Lindell
+Google URL: https://www.google.se/search?q=Yehuda Lindell
+[google] Found Birth year: 1971
+
+
+
+-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~ OK, young hacker. You are now considered to be a                ~~
+~~ INS{GENUINE_CRYPTOGRAPHER_BUT_NOT_YET_A_PROVEN_SKILLED_ONE}     ~~
+-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+[-] Could not find name
+[*] Closed connection to quizz.teaser.insomnihack.ch port 1031
+</code></pre>
+    </div>
+  </article>
+
+  
+  
+
+
+
+
+
+
+  <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/posts">Writeups</a></li>
+         
+          <li><a href="/news">News</a></li>
+         
+          <li><a href="/tags">Tags</a></li>
+         
+          <li><a href="/about">About</a></li>
+        
+      </ul>
+    </div>
+
+    
+    <div id="toc-footer" style="display: none">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#search-all-the-things">Search all the things!</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+    <li><a href="#the-script">The script</a>
+      <ul>
+        <li><a href="#output">Output</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+    
+
+    <div id="share-footer" style="display: none">
+      
+      <ul>
+  
+  
+    
+  
+  
+  <li>
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=http%3a%2f%2fexample.org%2fposts%2finsomnihack_teaser_2017_cryptoquiz%2f" aria-label="Facebook">
+      <i class="fab fa-facebook fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://twitter.com/share?url=http%3a%2f%2fexample.org%2fposts%2finsomnihack_teaser_2017_cryptoquiz%2f&text=Insomni%27hack%20teaser%20-%20Cryptoquizz%20%28crypto%2fmisc%2050%29" aria-label="Twitter">
+      <i class="fab fa-twitter fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=http%3a%2f%2fexample.org%2fposts%2finsomnihack_teaser_2017_cryptoquiz%2f&title=Insomni%27hack%20teaser%20-%20Cryptoquizz%20%28crypto%2fmisc%2050%29" aria-label="Linkedin">
+      <i class="fab fa-linkedin fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http%3a%2f%2fexample.org%2fposts%2finsomnihack_teaser_2017_cryptoquiz%2f&is_video=false&description=Insomni%27hack%20teaser%20-%20Cryptoquizz%20%28crypto%2fmisc%2050%29" aria-label="Pinterest">
+      <i class="fab fa-pinterest fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="mailto:?subject=Insomni%27hack%20teaser%20-%20Cryptoquizz%20%28crypto%2fmisc%2050%29&body=Check out this article: http%3a%2f%2fexample.org%2fposts%2finsomnihack_teaser_2017_cryptoquiz%2f" aria-label="Email">
+      <i class="fas fa-envelope fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://getpocket.com/save?url=http%3a%2f%2fexample.org%2fposts%2finsomnihack_teaser_2017_cryptoquiz%2f&title=Insomni%27hack%20teaser%20-%20Cryptoquizz%20%28crypto%2fmisc%2050%29" aria-label="Pocket">
+      <i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://reddit.com/submit?url=http%3a%2f%2fexample.org%2fposts%2finsomnihack_teaser_2017_cryptoquiz%2f&title=Insomni%27hack%20teaser%20-%20Cryptoquizz%20%28crypto%2fmisc%2050%29" aria-label="reddit">
+      <i class="fab fa-reddit fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.tumblr.com/share/link?url=http%3a%2f%2fexample.org%2fposts%2finsomnihack_teaser_2017_cryptoquiz%2f&name=Insomni%27hack%20teaser%20-%20Cryptoquizz%20%28crypto%2fmisc%2050%29&description=This%20was%20an%20interesting%20challange.%20You%20started%20by%20connecting%20with%20telnet%20to%20the%20server%20specified%20in%20the%20challenge%20description.%20Once%20connected%2c%20a%20question%20was%20asked%3a%20What%20is%20the%20birth%20year%20of%20%5bknown%20cryptographer%5d%3f%20You%20had%202%20seconds%20to%20react%20before%20the%20server%20disconnected%20you.%20Once%20you%20connected%20again%2c%20the%20server%20asked%20the%20same%20question%20but%20for%20a%20different%20person.%20I%20begun%20connecting%20over%20and%20over%20again%20to%20see%20if%20there%20was%20a%20pattern%20or%20if%20the%20selection%20of%20people%20was%20small." aria-label="Tumblr">
+      <i class="fab fa-tumblr fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=http%3a%2f%2fexample.org%2fposts%2finsomnihack_teaser_2017_cryptoquiz%2f&t=Insomni%27hack%20teaser%20-%20Cryptoquizz%20%28crypto%2fmisc%2050%29" aria-label="Hacker News">
+      <i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      
+        <a id="menu-toggle" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;" aria-label="Menu">
+          <i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+        <a id="toc-toggle" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;" aria-label="TOC">
+          <i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        
+        <a id="share-toggle" class="icon" href="#" onclick="$('#share-footer').toggle();return false;" aria-label="Share">
+          <i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" aria-label="Top of Page">
+          <i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+
+  <footer id="footer">
+  <div class="footer-left">
+    Copyright  &copy; 2021  ChaGu CTF 
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+        <li><a href="/">Home</a></li>
+         
+        <li><a href="/posts">Writeups</a></li>
+         
+        <li><a href="/news">News</a></li>
+         
+        <li><a href="/tags">Tags</a></li>
+         
+        <li><a href="/about">About</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+
+  </div>
+</body>
+
+<link rel="stylesheet" href=/lib/font-awesome/css/all.min.css>
+<script src=/lib/jquery/jquery.min.js></script>
+<script src=/js/main.js></script>
+
+<script src=/js/code-copy.js></script>
+
+
+
+
+</html>

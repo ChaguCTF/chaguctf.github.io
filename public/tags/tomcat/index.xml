@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tomcat on ChaGu CTF</title>
+    <link>http://example.org/tags/tomcat/</link>
+    <description>Recent content in Tomcat on ChaGu CTF</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 22 Jan 2017 11:22:32 +0200</lastBuildDate><atom:link href="http://example.org/tags/tomcat/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Insomni&#39;hack teaser - Smarttomcat (web 50)</title>
+      <link>http://example.org/posts/insomnihack_teaser_2017_smarttomcat/</link>
+      <pubDate>Sun, 22 Jan 2017 11:22:32 +0200</pubDate>
+      
+      <guid>http://example.org/posts/insomnihack_teaser_2017_smarttomcat/</guid>
+      <description>For this challenge, you are supposed to enter the correct coordinates to find the robot cat.
+For these types of challenges, I like using burp suite in order to record and modify HTTP requests. The following request was recorded when entering some random values.
+POST /index.php HTTP/1.1 Host: smarttomcat.teaser.insomnihack.ch User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.12; rv:50.0) Gecko/20100101 Firefox/50.0 Accept: */* Accept-Language: en-US,en;q=0.5 Accept-Encoding: gzip, deflate Content-Type: application/x-www-form-urlencoded; charset=UTF-8 X-Requested-With: XMLHttpRequest Referer: http://smarttomcat.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Reverse Engineering on ChaGu CTF</title>
+    <link>http://example.org/tags/reverse-engineering/</link>
+    <description>Recent content in Reverse Engineering on ChaGu CTF</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 05 Feb 2017 11:22:32 +0200</lastBuildDate><atom:link href="http://example.org/tags/reverse-engineering/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AlexCTF Re2 : C&#43;&#43; is fun: [100]</title>
+      <link>http://example.org/posts/alexctf-2017-02-05_re2/</link>
+      <pubDate>Sun, 05 Feb 2017 11:22:32 +0200</pubDate>
+      
+      <guid>http://example.org/posts/alexctf-2017-02-05_re2/</guid>
+      <description>So you get a binary when running it you get a message to enter the flag. When entering somthing wrong it tells you to try again. However, since I know that the flag starts with &amp;ldquo;ALEXCTF{&amp;rdquo; I trief that and got the message &amp;ldquo;You should have the flag by now&amp;rdquo; then I thought that the original code might look somthing like this
+#include &amp;lt;stdio.h&amp;gt;#include &amp;lt;string.h&amp;gt;using namespace std; int main () { string flag=&amp;#34;.</description>
+    </item>
+    
+    <item>
+      <title>AlexCTF Re4: Python rev</title>
+      <link>http://example.org/posts/alexctf-2017-02-05_re4/</link>
+      <pubDate>Sun, 05 Feb 2017 11:22:32 +0200</pubDate>
+      
+      <guid>http://example.org/posts/alexctf-2017-02-05_re4/</guid>
+      <description>In this challenge we got a python byte-code file. So the first step was to get the source code for this file. By using uncompyle2 we could get the python source code. That looked like this.
+import md5 md5s = [174282896860968005525213562254350376167L, 137092044126081477479435678296496849608L, 126300127609096051658061491018211963916L, 314989972419727999226545215739316729360L, 256525866025901597224592941642385934114L, 115141138810151571209618282728408211053L, 8705973470942652577929336993839061582L, 256697681645515528548061291580728800189L, 39818552652170274340851144295913091599L, 65313561977812018046200997898904313350L, 230909080238053318105407334248228870753L, 196125799557195268866757688147870815374L, 74874145132345503095307276614727915885L] print &amp;#39;Can you turn me back to python ? ...&amp;#39; flag = raw_input(&amp;#39;well as you wish.. what is the flag: &amp;#39;) if len(flag) &amp;gt; 69: print &amp;#39;nice try&amp;#39; exit() if len(flag) % 5 !</description>
+    </item>
+    
+  </channel>
+</rss>

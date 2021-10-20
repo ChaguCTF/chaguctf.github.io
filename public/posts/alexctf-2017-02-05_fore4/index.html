@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <link rel="preload" href="/lib/font-awesome/webfonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="/lib/font-awesome/webfonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="/lib/font-awesome/webfonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="/lib/JetBrainsMono/web/woff2/JetBrainsMono-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <script type="text/javascript" src="https://latest.cactus.chat/cactus.js"></script>
+  <link rel="stylesheet" href="https://latest.cactus.chat/style.css" type="text/css">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title> AlexCTF Fore4: Unknown format 200p | ChaGu CTF</title>
+  <link rel = 'canonical' href = 'http://example.org/posts/alexctf-2017-02-05_fore4/'>
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta property="og:title" content="AlexCTF Fore4: Unknown format 200p" />
+<meta property="og:description" content="Once more our agents managed to sniff data passed over USB, they told us that this is high profile data hidden by people knows what they are doing, they have dedicated devices for reading that secret file format. Can you help us finding what is the secret message?
+Let&rsquo;s begin We begun by running strings and binwalk to see if anything interesting showed. The strings command returned a whole lot of data, among the strings we found:" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/alexctf-2017-02-05_fore4/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2017-02-05T11:22:32+02:00" />
+<meta property="article:modified_time" content="2017-02-05T11:22:32+02:00" />
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="AlexCTF Fore4: Unknown format 200p"/>
+<meta name="twitter:description" content="Once more our agents managed to sniff data passed over USB, they told us that this is high profile data hidden by people knows what they are doing, they have dedicated devices for reading that secret file format. Can you help us finding what is the secret message?
+Let&rsquo;s begin We begun by running strings and binwalk to see if anything interesting showed. The strings command returned a whole lot of data, among the strings we found:"/>
+
+  
+  
+  
+  <link rel="stylesheet" href="http://example.org/css/styles.94f653e9e151e28067a7c5dbbc4600cbd5a3c721e79faaf971e523c40f3b249b8e4f20bb57810dfffa8d559ca5c140fd56eb4cd9c0853113ad08e66afdb08bdd.css" integrity="sha512-lPZT6eFR4oBnp8XbvEYAy9WjxyHnn6r5ceUjxA87JJuOTyC7V4EN//qNVZylwUD9VutM2cCFMROtCOZq/bCL3Q=="> 
+
+  
+  
+  
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+  
+<link rel="icon" type="image/png" href="http://example.org/images/favicon.ico" />
+
+  
+  
+  
+  
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+  <div class="content index py4">
+
+  <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;" aria-label="Top of Page"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+        <li><a href="/">Home</a></li>
+         
+        <li><a href="/posts">Writeups</a></li>
+         
+        <li><a href="/news">News</a></li>
+         
+        <li><a href="/tags">Tags</a></li>
+         
+        <li><a href="/about">About</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li>
+          <a class="icon" href=" http://example.org/posts/alexctf-2017-02-05_re2/" aria-label="Previous">
+            <i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i>
+          </a>
+        </li>
+        
+        
+        <li>
+          <a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" aria-label="Top of Page">
+            <i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i>
+          </a>
+        </li>
+        <li>
+          <a class="icon" href="#" aria-label="Share">
+            <i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i>
+          </a>
+        </li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      
+      <ul>
+  
+  
+    
+  
+  
+  <li>
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=http%3a%2f%2fexample.org%2fposts%2falexctf-2017-02-05_fore4%2f" aria-label="Facebook">
+      <i class="fab fa-facebook " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://twitter.com/share?url=http%3a%2f%2fexample.org%2fposts%2falexctf-2017-02-05_fore4%2f&text=AlexCTF%20Fore4%3a%20Unknown%20format%20200p" aria-label="Twitter">
+      <i class="fab fa-twitter " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=http%3a%2f%2fexample.org%2fposts%2falexctf-2017-02-05_fore4%2f&title=AlexCTF%20Fore4%3a%20Unknown%20format%20200p" aria-label="Linkedin">
+      <i class="fab fa-linkedin " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http%3a%2f%2fexample.org%2fposts%2falexctf-2017-02-05_fore4%2f&is_video=false&description=AlexCTF%20Fore4%3a%20Unknown%20format%20200p" aria-label="Pinterest">
+      <i class="fab fa-pinterest " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="mailto:?subject=AlexCTF%20Fore4%3a%20Unknown%20format%20200p&body=Check out this article: http%3a%2f%2fexample.org%2fposts%2falexctf-2017-02-05_fore4%2f" aria-label="Email">
+      <i class="fas fa-envelope " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://getpocket.com/save?url=http%3a%2f%2fexample.org%2fposts%2falexctf-2017-02-05_fore4%2f&title=AlexCTF%20Fore4%3a%20Unknown%20format%20200p" aria-label="Pocket">
+      <i class="fab fa-get-pocket " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://reddit.com/submit?url=http%3a%2f%2fexample.org%2fposts%2falexctf-2017-02-05_fore4%2f&title=AlexCTF%20Fore4%3a%20Unknown%20format%20200p" aria-label="reddit">
+      <i class="fab fa-reddit " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.tumblr.com/share/link?url=http%3a%2f%2fexample.org%2fposts%2falexctf-2017-02-05_fore4%2f&name=AlexCTF%20Fore4%3a%20Unknown%20format%20200p&description=Once%20more%20our%20agents%20managed%20to%20sniff%20data%20passed%20over%20USB%2c%20they%20told%20us%20that%20this%20is%20high%20profile%20data%20hidden%20by%20people%20knows%20what%20they%20are%20doing%2c%20they%20have%20dedicated%20devices%20for%20reading%20that%20secret%20file%20format.%20Can%20you%20help%20us%20finding%20what%20is%20the%20secret%20message%3f%0aLet%26rsquo%3bs%20begin%20We%20begun%20by%20running%20strings%20and%20binwalk%20to%20see%20if%20anything%20interesting%20showed.%20The%20strings%20command%20returned%20a%20whole%20lot%20of%20data%2c%20among%20the%20strings%20we%20found%3a" aria-label="Tumblr">
+      <i class="fab fa-tumblr " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=http%3a%2f%2fexample.org%2fposts%2falexctf-2017-02-05_fore4%2f&t=AlexCTF%20Fore4%3a%20Unknown%20format%20200p" aria-label="Hacker News">
+      <i class="fab fa-hacker-news " aria-hidden="true"></i>
+    </a>
+  </li>
+</ul>
+
+    </div>
+    
+    <div id="toc">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#lets-begin">Let&rsquo;s begin</a></li>
+    <li><a href="#what-we-learned">What we learned</a></li>
+  </ul>
+</nav>
+    </div>
+    
+  </span>
+</div>
+
+
+  <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+    <header>
+      <h1 class="posttitle" itemprop="name headline">
+        AlexCTF Fore4: Unknown format 200p
+      </h1>
+      <div class="meta">
+        
+        <div class="postdate">
+          
+          <time datetime="2017-02-05 11:22:32 &#43;0200 &#43;0200" itemprop="datePublished">2017-02-05</time>
+          
+        </div>
+        
+        
+        
+        
+        <div class="article-tag">
+            <i class="fas fa-tag"></i>
+            
+            
+            <a class="tag-link" href="/tags/usb" rel="tag">USB</a>
+            
+             ,  
+            <a class="tag-link" href="/tags/pcap" rel="tag">PCAP</a>
+            
+        </div>
+        
+      </div>
+    </header>
+
+
+    
+    <div class="content" itemprop="articleBody">
+      <p>Once more our agents managed to <a href="usb_sniff.pcap">sniff</a> data passed over USB, they told us that this is high profile data hidden by people knows what they are doing, they have dedicated devices for reading that secret file format. Can you help us finding what is the secret message?</p>
+<h2 id="lets-begin">Let&rsquo;s begin</h2>
+<p>We begun by running <code>strings</code> and <code>binwalk</code> to see if anything interesting showed. The <code>strings</code> command returned a whole lot of data, among the strings we found:</p>
+<pre tabindex="0"><code>Cryptoe6
+Hardware
+Vulnerability Research
+Developmentn
+Reverse Engineeringo
+Flag.mp4
+Forensics.mp
+The Heap - Once upon a free().mp4spl
+update_out.binware_hacking_hd.mp4amm
+28c3-4735-en-reverse_engineering_a_qualcomm_baseband.webm
+30c3-5477-en-An_introduction_to_Firmware_Analysis_h264-hd.mp4
+reverse engineering a qualcomm baseband.webm
+</code></pre><p>We figured this must be filler data or decoys. We continued by examning the pcap as we did in the previous challenge &ldquo;Fore3&rdquo;. This time we didn&rsquo;t find any obvious files and was stuck trying to figure out what to do next. Then a bird whispered in our ear and told us to check for certain keywords. We came a cross the string <code>SP01</code> in one of the packets.</p>
+<p><img src="pcap1.png" alt="pcap1"></p>
+<p>The following google query <code>SP01 magic bytes</code> revleaed that <code>SP01</code> was the magic header for kindle firmware. We googled <code>kindle sp01</code> and found this tool <a href="https://github.com/NiLuJe/KindleTool">https://github.com/NiLuJe/KindleTool</a>.</p>
+<p>We downloaded the tool and ran the following commands:</p>
+<pre tabindex="0"><code class="language-console" data-lang="console">root@kali:~/Downloads/fore4# kindletool dm usb_sniff.pcap out
+root@kali:~/Downloads/fore4# ls
+KindleTool  out  usb_sniff.pcap
+root@kali:~/Downloads/fore4# file out
+out: data
+root@kali:~/Downloads/fore4# binwalk out
+
+DECIMAL       HEXADECIMAL     DESCRIPTION
+--------------------------------------------------------------------------------
+2005          0x7D5           gzip compressed data, from Unix, last modified: 2016-12-31 20:20:49
+
+root@kali:~/Downloads/fore4# binwalk -e out
+
+DECIMAL       HEXADECIMAL     DESCRIPTION
+--------------------------------------------------------------------------------
+2005          0x7D5           gzip compressed data, from Unix, last modified: 2016-12-31 20:20:49
+
+root@kali:~/Downloads/fore4# ls
+KindleTool  out  _out.extracted  usb_sniff.pcap
+root@kali:~/Downloads/fore4# cd _out.extracted/
+root@kali:~/Downloads/fore4/_out.extracted# ls
+7D5  7D5.gz
+root@kali:~/Downloads/fore4/_out.extracted# file 7D5
+7D5: POSIX tar archive (GNU)
+root@kali:~/Downloads/fore4/_out.extracted# tar -xvf 7D5
+kindle_out/
+kindle_out/rootfs_md5_list.tar.gz
+kindle_out/2540270001-2692310002.ffs
+kindle_out/flag.txt
+kindle_out/update-patches.tar.gz
+tar: Unexpected EOF in archive
+tar: Unexpected EOF in archive
+tar: Error is not recoverable: exiting now
+root@kali:~/Downloads/fore4/_out.extracted# ls
+7D5  7D5.gz  kindle_out
+root@kali:~/Downloads/fore4/_out.extracted# cd kindle_out/
+root@kali:~/Downloads/fore4/_out.extracted/kindle_out# ls
+2540270001-2692310002.ffs  flag.txt  rootfs_md5_list.tar.gz  update-patches.tar.gz
+root@kali:~/Downloads/fore4/_out.extracted/kindle_out# cat flag.txt 
+ALEXCTF{Wh0_N33d5_K1nDl3_t0_3X7R4Ct_K1ND13_F1rMw4R3}
+root@kali:~/Downloads/fore4/_out.extracted/kindle_out# 
+</code></pre><h2 id="what-we-learned">What we learned</h2>
+<p>When viewing packet bytes in wireshark, always entertain the idea that there can be magic headers which can give clues to what file format you are dealing with.</p>
+
+    </div>
+  </article>
+
+  
+  
+
+
+
+
+
+
+  <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/posts">Writeups</a></li>
+         
+          <li><a href="/news">News</a></li>
+         
+          <li><a href="/tags">Tags</a></li>
+         
+          <li><a href="/about">About</a></li>
+        
+      </ul>
+    </div>
+
+    
+    <div id="toc-footer" style="display: none">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#lets-begin">Let&rsquo;s begin</a></li>
+    <li><a href="#what-we-learned">What we learned</a></li>
+  </ul>
+</nav>
+    </div>
+    
+
+    <div id="share-footer" style="display: none">
+      
+      <ul>
+  
+  
+    
+  
+  
+  <li>
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=http%3a%2f%2fexample.org%2fposts%2falexctf-2017-02-05_fore4%2f" aria-label="Facebook">
+      <i class="fab fa-facebook fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://twitter.com/share?url=http%3a%2f%2fexample.org%2fposts%2falexctf-2017-02-05_fore4%2f&text=AlexCTF%20Fore4%3a%20Unknown%20format%20200p" aria-label="Twitter">
+      <i class="fab fa-twitter fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=http%3a%2f%2fexample.org%2fposts%2falexctf-2017-02-05_fore4%2f&title=AlexCTF%20Fore4%3a%20Unknown%20format%20200p" aria-label="Linkedin">
+      <i class="fab fa-linkedin fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http%3a%2f%2fexample.org%2fposts%2falexctf-2017-02-05_fore4%2f&is_video=false&description=AlexCTF%20Fore4%3a%20Unknown%20format%20200p" aria-label="Pinterest">
+      <i class="fab fa-pinterest fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="mailto:?subject=AlexCTF%20Fore4%3a%20Unknown%20format%20200p&body=Check out this article: http%3a%2f%2fexample.org%2fposts%2falexctf-2017-02-05_fore4%2f" aria-label="Email">
+      <i class="fas fa-envelope fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://getpocket.com/save?url=http%3a%2f%2fexample.org%2fposts%2falexctf-2017-02-05_fore4%2f&title=AlexCTF%20Fore4%3a%20Unknown%20format%20200p" aria-label="Pocket">
+      <i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://reddit.com/submit?url=http%3a%2f%2fexample.org%2fposts%2falexctf-2017-02-05_fore4%2f&title=AlexCTF%20Fore4%3a%20Unknown%20format%20200p" aria-label="reddit">
+      <i class="fab fa-reddit fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.tumblr.com/share/link?url=http%3a%2f%2fexample.org%2fposts%2falexctf-2017-02-05_fore4%2f&name=AlexCTF%20Fore4%3a%20Unknown%20format%20200p&description=Once%20more%20our%20agents%20managed%20to%20sniff%20data%20passed%20over%20USB%2c%20they%20told%20us%20that%20this%20is%20high%20profile%20data%20hidden%20by%20people%20knows%20what%20they%20are%20doing%2c%20they%20have%20dedicated%20devices%20for%20reading%20that%20secret%20file%20format.%20Can%20you%20help%20us%20finding%20what%20is%20the%20secret%20message%3f%0aLet%26rsquo%3bs%20begin%20We%20begun%20by%20running%20strings%20and%20binwalk%20to%20see%20if%20anything%20interesting%20showed.%20The%20strings%20command%20returned%20a%20whole%20lot%20of%20data%2c%20among%20the%20strings%20we%20found%3a" aria-label="Tumblr">
+      <i class="fab fa-tumblr fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=http%3a%2f%2fexample.org%2fposts%2falexctf-2017-02-05_fore4%2f&t=AlexCTF%20Fore4%3a%20Unknown%20format%20200p" aria-label="Hacker News">
+      <i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      
+        <a id="menu-toggle" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;" aria-label="Menu">
+          <i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+        <a id="toc-toggle" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;" aria-label="TOC">
+          <i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        
+        <a id="share-toggle" class="icon" href="#" onclick="$('#share-footer').toggle();return false;" aria-label="Share">
+          <i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" aria-label="Top of Page">
+          <i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+
+  <footer id="footer">
+  <div class="footer-left">
+    Copyright  &copy; 2021  ChaGu CTF 
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+        <li><a href="/">Home</a></li>
+         
+        <li><a href="/posts">Writeups</a></li>
+         
+        <li><a href="/news">News</a></li>
+         
+        <li><a href="/tags">Tags</a></li>
+         
+        <li><a href="/about">About</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+
+  </div>
+</body>
+
+<link rel="stylesheet" href=/lib/font-awesome/css/all.min.css>
+<script src=/lib/jquery/jquery.min.js></script>
+<script src=/js/main.js></script>
+
+<script src=/js/code-copy.js></script>
+
+
+
+
+</html>

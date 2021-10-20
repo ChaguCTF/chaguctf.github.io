@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>C&#43;&#43; on ChaGu CTF</title>
+    <link>http://example.org/tags/c&#43;&#43;/</link>
+    <description>Recent content in C&#43;&#43; on ChaGu CTF</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 05 Feb 2017 11:22:32 +0200</lastBuildDate><atom:link href="http://example.org/tags/c++/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AlexCTF Re2 : C&#43;&#43; is fun: [100]</title>
+      <link>http://example.org/posts/alexctf-2017-02-05_re2/</link>
+      <pubDate>Sun, 05 Feb 2017 11:22:32 +0200</pubDate>
+      
+      <guid>http://example.org/posts/alexctf-2017-02-05_re2/</guid>
+      <description>So you get a binary when running it you get a message to enter the flag. When entering somthing wrong it tells you to try again. However, since I know that the flag starts with &amp;ldquo;ALEXCTF{&amp;rdquo; I trief that and got the message &amp;ldquo;You should have the flag by now&amp;rdquo; then I thought that the original code might look somthing like this
+#include &amp;lt;stdio.h&amp;gt;#include &amp;lt;string.h&amp;gt;using namespace std; int main () { string flag=&amp;#34;.</description>
+    </item>
+    
+  </channel>
+</rss>

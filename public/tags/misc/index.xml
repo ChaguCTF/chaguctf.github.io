@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Misc on ChaGu CTF</title>
+    <link>http://example.org/tags/misc/</link>
+    <description>Recent content in Misc on ChaGu CTF</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 22 Jan 2017 11:22:32 +0200</lastBuildDate><atom:link href="http://example.org/tags/misc/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Insomni&#39;hack teaser - Cryptoquizz (crypto/misc 50)</title>
+      <link>http://example.org/posts/insomnihack_teaser_2017_cryptoquiz/</link>
+      <pubDate>Sun, 22 Jan 2017 11:22:32 +0200</pubDate>
+      
+      <guid>http://example.org/posts/insomnihack_teaser_2017_cryptoquiz/</guid>
+      <description>This was an interesting challange. You started by connecting with telnet to the server specified in the challenge description. Once connected, a question was asked: What is the birth year of [known cryptographer]? You had 2 seconds to react before the server disconnected you. Once you connected again, the server asked the same question but for a different person. I begun connecting over and over again to see if there was a pattern or if the selection of people was small.</description>
+    </item>
+    
+  </channel>
+</rss>

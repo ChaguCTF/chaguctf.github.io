@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>USB on ChaGu CTF</title>
+    <link>http://example.org/tags/usb/</link>
+    <description>Recent content in USB on ChaGu CTF</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 05 Feb 2017 11:22:32 +0200</lastBuildDate><atom:link href="http://example.org/tags/usb/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AlexCTF Fore4: Unknown format 200p</title>
+      <link>http://example.org/posts/alexctf-2017-02-05_fore4/</link>
+      <pubDate>Sun, 05 Feb 2017 11:22:32 +0200</pubDate>
+      
+      <guid>http://example.org/posts/alexctf-2017-02-05_fore4/</guid>
+      <description>Once more our agents managed to sniff data passed over USB, they told us that this is high profile data hidden by people knows what they are doing, they have dedicated devices for reading that secret file format. Can you help us finding what is the secret message?
+Let&amp;rsquo;s begin We begun by running strings and binwalk to see if anything interesting showed. The strings command returned a whole lot of data, among the strings we found:</description>
+    </item>
+    
+  </channel>
+</rss>
