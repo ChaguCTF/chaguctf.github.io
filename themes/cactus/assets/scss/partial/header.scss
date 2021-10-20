@@ -1,6 +1,7 @@
 #header {
   margin: 0 auto 2rem;
   width: 100%;
+  text-align: center;
 
   h1,
   .h1 {
@@ -21,9 +22,7 @@
     text-decoration: none;
   }
   #logo {
-    display: inline-block;
-    float: left;
-    margin-right: 20px;
+    margin: auto;
     width: $logo-width;
     height: $logo-height;
     border-radius: 5px;
