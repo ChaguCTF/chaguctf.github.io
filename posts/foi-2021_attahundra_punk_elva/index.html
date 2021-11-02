@@ -1,0 +1,270 @@
+<!doctype html><html lang=en-us>
+<head>
+<link rel=preload href=/lib/font-awesome/webfonts/fa-brands-400.woff2 as=font type=font/woff2 crossorigin=anonymous>
+<link rel=preload href=/lib/font-awesome/webfonts/fa-regular-400.woff2 as=font type=font/woff2 crossorigin=anonymous>
+<link rel=preload href=/lib/font-awesome/webfonts/fa-solid-900.woff2 as=font type=font/woff2 crossorigin=anonymous>
+<link rel=preload href=/lib/JetBrainsMono/web/woff2/JetBrainsMono-Regular.woff2 as=font type=font/woff2 crossorigin=anonymous>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<title> FOI 2021: Åttahundra punkt elva (463 pts) | ChaGu CTF</title>
+<link rel=canonical href=https://chagu.org/posts/foi-2021_attahundra_punk_elva/>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta name=robots content="all,follow">
+<meta name=googlebot content="index,follow,snippet,archive">
+<meta property="og:title" content="FOI 2021: Åttahundra punkt elva (463 pts)">
+<meta property="og:description" content="In this task we get a network dump containing as the title peaks, 802.11 traffic. The goal is to decrypt the wpa protocol to be able to read the messages and hopefully find the flag in one of these messages.
+Cracking WPA If the dump contains the WPA handshake and SSID of the used access-point the decrypting should be a breeze in the park. An easy way to find out about the handshake this is by filtering for the protocol &ldquo;EAPOL&rdquo; in wireshark.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://chagu.org/posts/foi-2021_attahundra_punk_elva/"><meta property="article:section" content="posts">
+<meta property="article:published_time" content="2021-11-02T11:22:32+01:00">
+<meta property="article:modified_time" content="2021-11-02T11:22:32+01:00">
+<meta name=twitter:card content="summary">
+<meta name=twitter:title content="FOI 2021: Åttahundra punkt elva (463 pts)">
+<meta name=twitter:description content="In this task we get a network dump containing as the title peaks, 802.11 traffic. The goal is to decrypt the wpa protocol to be able to read the messages and hopefully find the flag in one of these messages.
+Cracking WPA If the dump contains the WPA handshake and SSID of the used access-point the decrypting should be a breeze in the park. An easy way to find out about the handshake this is by filtering for the protocol &ldquo;EAPOL&rdquo; in wireshark.">
+<link rel=stylesheet href=https://chagu.org/css/styles.877f0d187d777677210859d158f899b22bc9251cff14ab3f2aeaaf7e09c4b15a691db4d151e8f0be980792a40c8d658ffb0a5ed37ea53eccec5125ee4e6055b7.css integrity="sha512-h38NGH13dnchCFnRWPiZsivJJRz/FKs/KuqvfgnEsVppHbTRUejwvpgHkqQMjWWP+wpe036lPszsUSXuTmBVtw=="><!--[if lt IE 9]><script src=https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js></script>
+<script src=https://oss.maxcdn.com/respond/1.4.2/respond.min.js></script><![endif]-->
+<link rel=icon type=image/png href=https://chagu.org/images/favicon.ico>
+</head>
+<body class="max-width mx-auto px3 ltr">
+<div class="content index py4">
+<div id=header-post>
+<a id=menu-icon href=#><i class="fas fa-bars fa-lg"></i></a>
+<a id=menu-icon-tablet href=#><i class="fas fa-bars fa-lg"></i></a>
+<a id=top-icon-tablet href=# onclick="$('html, body').animate({scrollTop:0},'fast')" style=display:none aria-label="Top of Page"><i class="fas fa-chevron-up fa-lg"></i></a>
+<span id=menu>
+<span id=nav>
+<ul>
+<li><a href=/>Home</a></li>
+<li><a href=/posts>Writeups</a></li>
+<li><a href=/tags>Tags</a></li>
+<li><a href=/about>About</a></li>
+</ul>
+</span>
+<br>
+<span id=actions>
+<ul>
+<li>
+<a class=icon href=https://chagu.org/posts/sec-t_2017_g1bs0n_misc_300/ aria-label=Previous>
+<i class="fas fa-chevron-left" aria-hidden=true onmouseover="$('#i-prev').toggle()" onmouseout="$('#i-prev').toggle()"></i>
+</a>
+</li>
+<li>
+<a class=icon href=https://chagu.org/posts/foi-2021_tokfrans/ aria-label=Next>
+<i class="fas fa-chevron-right" aria-hidden=true onmouseover="$('#i-next').toggle()" onmouseout="$('#i-next').toggle()"></i>
+</a>
+</li>
+<li>
+<a class=icon href=# onclick="$('html, body').animate({scrollTop:0},'fast')" aria-label="Top of Page">
+<i class="fas fa-chevron-up" aria-hidden=true onmouseover="$('#i-top').toggle()" onmouseout="$('#i-top').toggle()"></i>
+</a>
+</li>
+<li>
+<a class=icon href=# aria-label=Share>
+<i class="fas fa-share-alt" aria-hidden=true onmouseover="$('#i-share').toggle()" onmouseout="$('#i-share').toggle()" onclick="return $('#share').toggle(),!1"></i>
+</a>
+</li>
+</ul>
+<span id=i-prev class=info style=display:none>Previous post</span>
+<span id=i-next class=info style=display:none>Next post</span>
+<span id=i-top class=info style=display:none>Back to top</span>
+<span id=i-share class=info style=display:none>Share post</span>
+</span>
+<br>
+<div id=share style=display:none>
+<ul>
+<li>
+<a class=icon href="http://www.facebook.com/sharer.php?u=https%3a%2f%2fchagu.org%2fposts%2ffoi-2021_attahundra_punk_elva%2f" aria-label=Facebook>
+<i class="fab fa-facebook" aria-hidden=true></i>
+</a>
+</li>
+<li>
+<a class=icon href="https://twitter.com/share?url=https%3a%2f%2fchagu.org%2fposts%2ffoi-2021_attahundra_punk_elva%2f&text=FOI%202021%3a%20%c3%85ttahundra%20punkt%20elva%20%28463%20pts%29" aria-label=Twitter>
+<i class="fab fa-twitter" aria-hidden=true></i>
+</a>
+</li>
+<li>
+<a class=icon href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2fchagu.org%2fposts%2ffoi-2021_attahundra_punk_elva%2f&title=FOI%202021%3a%20%c3%85ttahundra%20punkt%20elva%20%28463%20pts%29" aria-label=Linkedin>
+<i class="fab fa-linkedin" aria-hidden=true></i>
+</a>
+</li>
+<li>
+<a class=icon href="https://pinterest.com/pin/create/bookmarklet/?url=https%3a%2f%2fchagu.org%2fposts%2ffoi-2021_attahundra_punk_elva%2f&is_video=false&description=FOI%202021%3a%20%c3%85ttahundra%20punkt%20elva%20%28463%20pts%29" aria-label=Pinterest>
+<i class="fab fa-pinterest" aria-hidden=true></i>
+</a>
+</li>
+<li>
+<a class=icon href="mailto:?subject=FOI%202021%3a%20%c3%85ttahundra%20punkt%20elva%20%28463%20pts%29&body=Check out this article: https%3a%2f%2fchagu.org%2fposts%2ffoi-2021_attahundra_punk_elva%2f" aria-label=Email>
+<i class="fas fa-envelope" aria-hidden=true></i>
+</a>
+</li>
+<li>
+<a class=icon href="https://getpocket.com/save?url=https%3a%2f%2fchagu.org%2fposts%2ffoi-2021_attahundra_punk_elva%2f&title=FOI%202021%3a%20%c3%85ttahundra%20punkt%20elva%20%28463%20pts%29" aria-label=Pocket>
+<i class="fab fa-get-pocket" aria-hidden=true></i>
+</a>
+</li>
+<li>
+<a class=icon href="http://reddit.com/submit?url=https%3a%2f%2fchagu.org%2fposts%2ffoi-2021_attahundra_punk_elva%2f&title=FOI%202021%3a%20%c3%85ttahundra%20punkt%20elva%20%28463%20pts%29" aria-label=reddit>
+<i class="fab fa-reddit" aria-hidden=true></i>
+</a>
+</li>
+<li>
+<a class=icon href="http://www.tumblr.com/share/link?url=https%3a%2f%2fchagu.org%2fposts%2ffoi-2021_attahundra_punk_elva%2f&name=FOI%202021%3a%20%c3%85ttahundra%20punkt%20elva%20%28463%20pts%29&description=In%20this%20task%20we%20get%20a%20network%20dump%20containing%20as%20the%20title%20peaks%2c%20802.11%20traffic.%20The%20goal%20is%20to%20decrypt%20the%20wpa%20protocol%20to%20be%20able%20to%20read%20the%20messages%20and%20hopefully%20find%20the%20flag%20in%20one%20of%20these%20messages.%0aCracking%20WPA%20If%20the%20dump%20contains%20the%20WPA%20handshake%20and%20SSID%20of%20the%20used%20access-point%20the%20decrypting%20should%20be%20a%20breeze%20in%20the%20park.%20An%20easy%20way%20to%20find%20out%20about%20the%20handshake%20this%20is%20by%20filtering%20for%20the%20protocol%20%26ldquo%3bEAPOL%26rdquo%3b%20in%20wireshark." aria-label=Tumblr>
+<i class="fab fa-tumblr" aria-hidden=true></i>
+</a>
+</li>
+<li>
+<a class=icon href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2fchagu.org%2fposts%2ffoi-2021_attahundra_punk_elva%2f&t=FOI%202021%3a%20%c3%85ttahundra%20punkt%20elva%20%28463%20pts%29" aria-label="Hacker News">
+<i class="fab fa-hacker-news" aria-hidden=true></i>
+</a>
+</li>
+</ul>
+</div>
+<div id=toc>
+<nav id=TableOfContents>
+<ul>
+<li><a href=#cracking-wpa>Cracking WPA</a></li>
+<li><a href=#flag-in-the-open>Flag in the open</a></li>
+</ul>
+</nav>
+</div>
+</span>
+</div>
+<article class=post itemscope itemtype=http://schema.org/BlogPosting>
+<header>
+<h1 class=posttitle itemprop="name headline">
+FOI 2021: Åttahundra punkt elva (463 pts)
+</h1>
+<div class=meta>
+<div class=postdate>
+<time datetime="2021-11-02 11:22:32 +0100 +0100" itemprop=datePublished>2021-11-02</time>
+</div>
+<div class=article-read-time>
+<i class="far fa-clock"></i>
+1 minute read
+</div>
+<div class=article-tag>
+<i class="fas fa-tag"></i>
+<a class=tag-link href=/tags/forensics rel=tag>Forensics</a>
+</div>
+</div>
+</header>
+<div class=content itemprop=articleBody>
+<p>In this task we get a network dump containing as the title peaks, 802.11 traffic. The goal is to decrypt the wpa protocol to be able to read the messages and hopefully find the flag in one of these messages.</p>
+<h2 id=cracking-wpa>Cracking WPA</h2>
+<p>If the dump contains the WPA handshake and SSID of the used access-point the decrypting should be a breeze in the park. An easy way to find out about the handshake this is by filtering for the protocol &ldquo;EAPOL&rdquo; in wireshark. Let&rsquo;s dive into wireshark.</p>
+<p>By filtering by eapol we can see that all 4 parts of the handshake are available:</p>
+<p><img src=attahundra_1.png alt=attahundra_1.png></p>
+<p>With this knowledge it is just a matter of converting this information, feed it into hashcat and let it go ham!</p>
+<p>I did the convertion using the tool <em>hcxpcapngtool</em> which converts the data into hashcat format. The following command was used:</p>
+<p><code>hcxpcapngtool -o hash.hc22000 -E wordlist chall.pcapng</code> The output looks like this:</p>
+<p><img src=attahundra_2.png alt=attahundra_2.png></p>
+<p>This can now be feeded into hashcat using the 22000 mode (WPA-PSK). Which gave me the information <code>CTF-testnet:password123</code></p>
+<p>Wi-fi cracked ✔️✔️</p>
+<h2 id=flag-in-the-open>Flag in the open</h2>
+<p>Alright, with the wi-fi credential in hand the traffic can be decrypted. I then sorted the packets since it&rsquo;s not much traffic going on inside of this dump and when inspecting the decrypted largest packet the flag was found!</p>
+<p><img src=attahundra_3.png alt=attahundra_3.png></p>
+<p>The flag was: cratectf{kanske_hade_wep_varit_ett_alternativ}</p>
+</div>
+</article>
+<div id=footer-post-container>
+<div id=footer-post>
+<div id=nav-footer style=display:none>
+<ul>
+<li><a href=/>Home</a></li>
+<li><a href=/posts>Writeups</a></li>
+<li><a href=/tags>Tags</a></li>
+<li><a href=/about>About</a></li>
+</ul>
+</div>
+<div id=toc-footer style=display:none>
+<nav id=TableOfContents>
+<ul>
+<li><a href=#cracking-wpa>Cracking WPA</a></li>
+<li><a href=#flag-in-the-open>Flag in the open</a></li>
+</ul>
+</nav>
+</div>
+<div id=share-footer style=display:none>
+<ul>
+<li>
+<a class=icon href="http://www.facebook.com/sharer.php?u=https%3a%2f%2fchagu.org%2fposts%2ffoi-2021_attahundra_punk_elva%2f" aria-label=Facebook>
+<i class="fab fa-facebook fa-lg" aria-hidden=true></i>
+</a>
+</li>
+<li>
+<a class=icon href="https://twitter.com/share?url=https%3a%2f%2fchagu.org%2fposts%2ffoi-2021_attahundra_punk_elva%2f&text=FOI%202021%3a%20%c3%85ttahundra%20punkt%20elva%20%28463%20pts%29" aria-label=Twitter>
+<i class="fab fa-twitter fa-lg" aria-hidden=true></i>
+</a>
+</li>
+<li>
+<a class=icon href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2fchagu.org%2fposts%2ffoi-2021_attahundra_punk_elva%2f&title=FOI%202021%3a%20%c3%85ttahundra%20punkt%20elva%20%28463%20pts%29" aria-label=Linkedin>
+<i class="fab fa-linkedin fa-lg" aria-hidden=true></i>
+</a>
+</li>
+<li>
+<a class=icon href="https://pinterest.com/pin/create/bookmarklet/?url=https%3a%2f%2fchagu.org%2fposts%2ffoi-2021_attahundra_punk_elva%2f&is_video=false&description=FOI%202021%3a%20%c3%85ttahundra%20punkt%20elva%20%28463%20pts%29" aria-label=Pinterest>
+<i class="fab fa-pinterest fa-lg" aria-hidden=true></i>
+</a>
+</li>
+<li>
+<a class=icon href="mailto:?subject=FOI%202021%3a%20%c3%85ttahundra%20punkt%20elva%20%28463%20pts%29&body=Check out this article: https%3a%2f%2fchagu.org%2fposts%2ffoi-2021_attahundra_punk_elva%2f" aria-label=Email>
+<i class="fas fa-envelope fa-lg" aria-hidden=true></i>
+</a>
+</li>
+<li>
+<a class=icon href="https://getpocket.com/save?url=https%3a%2f%2fchagu.org%2fposts%2ffoi-2021_attahundra_punk_elva%2f&title=FOI%202021%3a%20%c3%85ttahundra%20punkt%20elva%20%28463%20pts%29" aria-label=Pocket>
+<i class="fab fa-get-pocket fa-lg" aria-hidden=true></i>
+</a>
+</li>
+<li>
+<a class=icon href="http://reddit.com/submit?url=https%3a%2f%2fchagu.org%2fposts%2ffoi-2021_attahundra_punk_elva%2f&title=FOI%202021%3a%20%c3%85ttahundra%20punkt%20elva%20%28463%20pts%29" aria-label=reddit>
+<i class="fab fa-reddit fa-lg" aria-hidden=true></i>
+</a>
+</li>
+<li>
+<a class=icon href="http://www.tumblr.com/share/link?url=https%3a%2f%2fchagu.org%2fposts%2ffoi-2021_attahundra_punk_elva%2f&name=FOI%202021%3a%20%c3%85ttahundra%20punkt%20elva%20%28463%20pts%29&description=In%20this%20task%20we%20get%20a%20network%20dump%20containing%20as%20the%20title%20peaks%2c%20802.11%20traffic.%20The%20goal%20is%20to%20decrypt%20the%20wpa%20protocol%20to%20be%20able%20to%20read%20the%20messages%20and%20hopefully%20find%20the%20flag%20in%20one%20of%20these%20messages.%0aCracking%20WPA%20If%20the%20dump%20contains%20the%20WPA%20handshake%20and%20SSID%20of%20the%20used%20access-point%20the%20decrypting%20should%20be%20a%20breeze%20in%20the%20park.%20An%20easy%20way%20to%20find%20out%20about%20the%20handshake%20this%20is%20by%20filtering%20for%20the%20protocol%20%26ldquo%3bEAPOL%26rdquo%3b%20in%20wireshark." aria-label=Tumblr>
+<i class="fab fa-tumblr fa-lg" aria-hidden=true></i>
+</a>
+</li>
+<li>
+<a class=icon href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2fchagu.org%2fposts%2ffoi-2021_attahundra_punk_elva%2f&t=FOI%202021%3a%20%c3%85ttahundra%20punkt%20elva%20%28463%20pts%29" aria-label="Hacker News">
+<i class="fab fa-hacker-news fa-lg" aria-hidden=true></i>
+</a>
+</li>
+</ul>
+</div>
+<div id=actions-footer>
+<a id=menu-toggle class=icon href=# onclick="return $('#nav-footer').toggle(),!1" aria-label=Menu>
+<i class="fas fa-bars fa-lg" aria-hidden=true></i> Menu</a>
+<a id=toc-toggle class=icon href=# onclick="return $('#toc-footer').toggle(),!1" aria-label=TOC>
+<i class="fas fa-list fa-lg" aria-hidden=true></i> TOC</a>
+<a id=share-toggle class=icon href=# onclick="return $('#share-footer').toggle(),!1" aria-label=Share>
+<i class="fas fa-share-alt fa-lg" aria-hidden=true></i> share</a>
+<a id=top style=display:none class=icon href=# onclick="$('html, body').animate({scrollTop:0},'fast')" aria-label="Top of Page">
+<i class="fas fa-chevron-up fa-lg" aria-hidden=true></i> Top</a>
+</div>
+</div>
+</div>
+<footer id=footer>
+<div class=footer-left>
+Copyright &copy; 2021 ChaGu CTF
+</div>
+<div class=footer-right>
+<nav>
+<ul>
+<li><a href=/>Home</a></li>
+<li><a href=/posts>Writeups</a></li>
+<li><a href=/tags>Tags</a></li>
+<li><a href=/about>About</a></li>
+</ul>
+</nav>
+</div>
+</footer>
+</div>
+</body>
+<link rel=stylesheet href=/lib/font-awesome/css/all.min.css>
+<script src=/lib/jquery/jquery.min.js></script>
+<script src=/js/main.js></script>
+<script src=/js/code-copy.js></script>
+</html>
